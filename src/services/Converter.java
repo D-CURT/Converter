@@ -13,4 +13,12 @@ public class Converter {
         this.list = list;
         this.time = time;
     }
+
+    @Override
+    public String toString() {
+        return "Converter{" +
+                "list=" + list +
+                ", time=" + time +
+                '}';
+    }
 }
