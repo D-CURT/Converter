@@ -1,7 +1,7 @@
 package interfaces;
 
 @FunctionalInterface
-public interface SpeedConversion {
+public interface UnitConversion {
     double convert(Double n);
 }
 

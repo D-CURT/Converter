@@ -1,3 +1,7 @@
+import beans.Speed;
+import beans.Time;
+import beans.enums.SpeedUnits;
+import beans.enums.TimeUnits;
 import services.Converter;
 import services.factory.ConverterFactory;
 import support.DataReader;
@@ -19,6 +23,9 @@ public class Runner {
 
             System.out.println("Outputting of the speeds list to console:");
             converter.speedsAsList().forEach(speed -> System.out.println(converter.speedAs_ms(speed)));
+
+            System.out.println(converter.getDistance(new Time("1", "h"), new Speed("120", "kmh")));
+
         } catch (IOException e) {
             e.printStackTrace();
         }

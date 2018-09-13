@@ -3,6 +3,7 @@ package services;
 import beans.Speed;
 import beans.Time;
 import beans.enums.SpeedUnits;
+import beans.enums.TimeUnits;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -24,6 +25,11 @@ public class Converter {
 
     public String speedAs_ms(Speed speed) {
         return speed + " = " + format(SpeedUnits.unitAs_ms(speed.getValue(), speed.getUnit())) + "_in_ms";
+    }
+
+    public String getDistance(Time time, Speed speed) {
+        return format(SpeedUnits.unitAs_ms(speed.getValue(), speed.getUnit()) *
+                TimeUnits.unitAs_s(time.getValue(), time.getUnit())) + "_in_m";
     }
 
     private String format(Double n) {

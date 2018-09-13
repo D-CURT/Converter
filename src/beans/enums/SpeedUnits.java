@@ -1,6 +1,6 @@
 package beans.enums;
 
-import interfaces.SpeedConversion;
+import interfaces.UnitConversion;
 
 import java.util.Arrays;
 
@@ -11,9 +11,9 @@ public enum SpeedUnits {
     MS("ms", n -> n);
 
     private final String unit;
-    private final SpeedConversion function;
+    private final UnitConversion function;
 
-    SpeedUnits(String unit, SpeedConversion function) {
+    SpeedUnits(String unit, UnitConversion function) {
         this.unit = unit;
         this.function = function;
     }
