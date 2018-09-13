@@ -11,6 +11,6 @@ public abstract class Essence {
 
     @Override
     public String toString() {
-        return value + "_in_" + unit;
+        return value + " " + unit + " = " + value + "_in_" + unit;
     }
 }

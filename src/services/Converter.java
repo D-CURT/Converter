@@ -14,6 +14,10 @@ public class Converter {
         this.time = time;
     }
 
+    public List<Speed> speedsAsList() {
+        return list;
+    }
+
     @Override
     public String toString() {
         return "Converter{" +
