@@ -1,6 +1,7 @@
 import beans.Essence;
 import beans.Speed;
 import beans.Time;
+import services.Converter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,21 +26,28 @@ public class DataReader {
         return new Speed(separated[0], separated[1]);
     }
 
-    public List<Speed> getEssenceList() {
+    public Converter getEssenceList() {
         List<Speed> list = new ArrayList<>();
-        String[] values;
         String line;
+        boolean firstLine = true;
+        Essence essence;
+        Time time = null;
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             while ((line = reader.readLine()) != null) {
-                values = line.split(" ");
-                list.add(new Speed(values[0], values[1]));
+                essence = readLine(line);
+                if (firstLine) {
+                    time = (Time) essence;
+                    firstLine = false;
+                }
+                //noinspection ConstantConditions
+                list.add((Speed) essence);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return list;
+        return new Converter(list, time);
     }
 
 }

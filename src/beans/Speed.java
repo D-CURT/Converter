@@ -13,6 +13,14 @@ public class Speed extends Essence{
         return Integer.parseInt(value);
     }
 
+    public String getValue() {
+        return value;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
     @Override
     public String toString() {
         return super.toString();

@@ -9,6 +9,14 @@ public class Time extends Essence{
         this.unit = unit;
     }
 
+    public String getValue() {
+        return value;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
     @Override
     public String toString() {
         return super.toString();
