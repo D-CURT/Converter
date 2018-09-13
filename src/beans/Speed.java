@@ -1,6 +1,6 @@
 package beans;
 
-public class Speed {
+public class Speed extends Essence{
     private String value;
     private String unit;
 
@@ -15,6 +15,6 @@ public class Speed {
 
     @Override
     public String toString() {
-        return value + "_in_" + unit;
+        return super.toString();
     }
 }
