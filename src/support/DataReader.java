@@ -1,7 +1,9 @@
 package support;
 
+import beans.Essence;
 import beans.Speed;
 import beans.Time;
+import beans.enums.TimeUnits;
 import services.Converter;
 
 import java.io.IOException;
@@ -9,6 +11,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static beans.enums.TimeUnits.isTimeUnit;
 
 public class DataReader {
     private String path;
@@ -17,23 +22,25 @@ public class DataReader {
         this.path = path;
     }
 
-    private List<String> fileAsList() throws IOException {
-        return new ArrayList<>(Files.readAllLines(Paths.get(path)));
+    private List<Essence> fileAsList() throws IOException {
+        return Files.readAllLines(Paths.get(path)).stream().map(this::getEssence).collect(Collectors.toList());
+    }
+
+    private Essence getEssence(String s) {
+        String[] fields = s.split(" ");
+        return (isTimeUnit(fields[1])) ? new Time(fields[0], fields[1]) : new Speed(fields[0], fields[1]);
     }
 
     public Converter getConverter() throws IOException{
         List<Speed> list = new ArrayList<>();
-        String[] fields;
-        List<String> essences = fileAsList();
         boolean firstLine = true;
         Time time = null;
 
-        for (String line: essences) {
-            fields = line.split(" ");
+        for (Essence essence: fileAsList()) {
             if (firstLine) {
-                time = new Time(fields[0], fields[1]);
+                time = (Time) essence;
                 firstLine = false;
-            } else list.add(new Speed(fields[0], fields[1]));
+            } else list.add((Speed) essence);
         }
 
         return new Converter(list, time);
