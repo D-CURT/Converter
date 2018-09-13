@@ -26,10 +26,6 @@ public enum SpeedUnits {
         return getUnit(unit).function.convert(Double.parseDouble(value));
     }
 
-    public SpeedConversion getFunction() {
-        return function;
-    }
-
     public static boolean isSpeedUnit(String s) {
         return getUnit(s) != null;
     }
