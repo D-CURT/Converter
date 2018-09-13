@@ -1,15 +1,13 @@
-import beans.Essence;
 import beans.Speed;
 import beans.Time;
 import services.Converter;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import static beans.enums.TimeUnits.isTimeUnit;
 
 public class DataReader {
     private String path;
@@ -19,8 +17,7 @@ public class DataReader {
     }
 
     public boolean readLine(String s) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        try {
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             s = reader.readLine();
         } catch (IOException e) {
             e.printStackTrace();
@@ -30,10 +27,18 @@ public class DataReader {
 
     public Converter getConverter() {
         List<Speed> list = new ArrayList<>();
-        String line;
+        String[] fields;
+        String line = "";
         boolean firstLine = true;
-        Essence essence;
         Time time = null;
+
+        while (readLine(line)) {
+            fields = line.split(" ");
+            if (firstLine) {
+                time = new Time(fields[0], fields[1]);
+                firstLine = false;
+            } else list.add(new Speed(fields[0], fields[1]));
+        }
 
         return new Converter(list, time);
     }
