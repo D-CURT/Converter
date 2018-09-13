@@ -1,21 +1,33 @@
 package beans.enums;
 
+import interfaces.SpeedConversion;
+
 import java.util.Arrays;
 
 public enum SpeedUnits {
-    MPH("mph"),
-    KMH("kmh"),
-    KH("kh"),
-    MS("ms");
+    MPH("mph", n -> n * 0.44704),
+    KMH("kmh", n -> n * 0.27777777777778),
+    KH("kh", n -> n * 0.514),
+    MS("ms", n -> n);
 
     private final String unit;
+    private final SpeedConversion function;
 
-    SpeedUnits(String unit) {
+    SpeedUnits(String unit, SpeedConversion function) {
         this.unit = unit;
+        this.function = function;
     }
 
     public static SpeedUnits getUnit(String s) {
         return Arrays.stream(values()).filter(speedUnits -> speedUnits.unit.equals(s)).findFirst().orElse(null);
+    }
+
+    public static double unitAs_ms(String value, String unit) {
+        return getUnit(unit).function.convert(Double.parseDouble(value));
+    }
+
+    public SpeedConversion getFunction() {
+        return function;
     }
 
     public static boolean isSpeedUnit(String s) {

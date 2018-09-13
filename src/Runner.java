@@ -18,7 +18,7 @@ public class Runner {
             System.out.println("\ntask 2:");
 
             System.out.println("Outputting of a speeds list to console:");
-            converter.speedsAsList().forEach(System.out::println);
+            converter.speedsAsList().forEach(speed -> System.out.println(converter.speedAs_ms(speed)));
         } catch (IOException e) {
             e.printStackTrace();
         }
