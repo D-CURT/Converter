@@ -17,7 +17,7 @@ public class DataReader {
         this.path = path;
     }
 
-    public String readLine() {
+    private String readLine() {
         String s = null;
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             s = reader.readLine();
@@ -29,7 +29,7 @@ public class DataReader {
 
     public Converter getConverter() {
         List<Speed> list = new ArrayList<>();
-        String[] fields = new String[2];
+        String[] fields;
         String line;
         boolean firstLine = true;
         Time time = null;
