@@ -5,19 +5,17 @@ import beans.Speed;
 import beans.Time;
 import beans.enums.SpeedUnits;
 import beans.enums.TimeUnits;
+import beans.factory.EssenceFactory;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class Converter {
     private List<Speed> list;
     private Time time;
 
-    public Converter(List<Speed> list, Time time) {
+    private Converter(List<Speed> list, Time time) {
         this.list = list;
         this.time = time;
     }
@@ -30,13 +28,28 @@ public class Converter {
         return speed + " = " + format(SpeedUnits.unitAs_ms(speed.getValue(), speed.getUnit())) + "_in_ms";
     }
 
+    public static Converter getConverter(List<String> lines) {
+        List<Speed> list = new ArrayList<>();
+        boolean firstLine = true;
+        Time time = null;
+
+        for (String line: lines) {
+            if (firstLine) {
+                time = (Time) EssenceFactory.getEssence(line);
+                firstLine = false;
+            } else list.add((Speed) EssenceFactory.getEssence(line));
+        }
+
+        return new Converter(list, time);
+    }
+
     private Distance getDistance(Speed speed) {
         double value = SpeedUnits.unitAs_ms(speed.getValue(), speed.getUnit()) *
                 TimeUnits.unitAs_s(time.getValue(), time.getUnit());
         return new Distance(format(value), "m");
     }
 
-    public Distance[] getDistancesAsArray() {
+    private Distance[] getDistancesAsArray() {
         return list.stream().map(this::getDistance).toArray(Distance[]::new);
     }
 

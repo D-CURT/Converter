@@ -1,6 +1,5 @@
 import beans.Distance;
 import services.Converter;
-import services.factory.ConverterFactory;
 import support.DataReader;
 
 import java.io.IOException;
@@ -14,8 +13,9 @@ public class Runner {
 
             System.out.println("Reading a file and creating a list of strings...");
             List<String> list = new DataReader(args[0]).fileAsList();
+
             System.out.println("Creating a converter, which contains a speeds list and time, received from file, as fields...");
-            Converter converter = ConverterFactory.getConverter(list);
+            Converter converter = Converter.getConverter(list);
 
             System.out.println("\ntask 2:");
 
@@ -30,7 +30,6 @@ public class Runner {
             System.out.println("Outputting of the sorted distances array:");
             Arrays.stream(sortedDistances).forEach(System.out::println);
 
-
             System.out.println("\ntask 4:");
 
             System.out.print("Has the array one or more values from 500 to 501 meters: ");
@@ -40,7 +39,6 @@ public class Runner {
                 if (value >= 500 && value <= 501) flag = true;
             }
             System.out.println(flag ? "yes" : "no");
-
 
         } catch (IOException e) {
             e.printStackTrace();
