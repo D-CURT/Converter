@@ -1,12 +1,9 @@
 import beans.Distance;
 import services.Converter;
 import support.DataReader;
-import support.comparators.SpeedComparator;
-
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Runner {
     public static void main(String[] args) {
@@ -42,9 +39,10 @@ public class Runner {
             }
             System.out.println(flag ? "yes" : "no");
 
-            System.out.println(converter.speedsAsList().stream()
-                                                       .sorted(new SpeedComparator())
-                                                       .collect(Collectors.groupingBy(speed -> speed.getSpeedUnit().getPriority())));
+            System.out.println("\ntask 5:");
+
+            System.out.println("Outputting of the sorted speeds list:");
+            converter.getSortedSpeedsList().forEach(System.out::println);
 
         } catch (IOException e) {
             e.printStackTrace();

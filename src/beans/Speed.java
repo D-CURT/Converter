@@ -14,8 +14,8 @@ public class Speed extends Essence{
         return Integer.parseInt(getValue());
     }
 
-    public SpeedUnits getSpeedUnit() {
-        return speedUnit;
+    public int getUnitPriority() {
+        return speedUnit.getPriority();
     }
 
     @Override

@@ -7,6 +7,7 @@ import beans.enums.SpeedUnits;
 import beans.enums.TimeUnits;
 import beans.factory.EssenceFactory;
 import support.comparators.SpeedComparator;
+import support.comparators.SpeedUnitComparator;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -20,7 +21,6 @@ public class Converter {
     private Converter(List<Speed> list, Time time) {
         this.list = list;
         this.time = time;
-        sortSpeedsList();
     }
 
     public List<Speed> speedsAsList() {
@@ -46,18 +46,19 @@ public class Converter {
         return new Converter(list, time);
     }
 
-    public void sortSpeedsList() {
-        list.stream().sorted(new SpeedComparator())
-                .collect(Collectors.groupingBy(speed -> speed.getSpeedUnit().getPriority()));
+    public List<Speed> getSortedSpeedsList() {
+         return list.stream()
+                 .sorted(new SpeedComparator())
+                 .sorted(new SpeedUnitComparator()).collect(Collectors.toList());
     }
 
-    public Distance getDistance(Speed speed) {
+    private Distance getDistance(Speed speed) {
         double value = SpeedUnits.unitIn_ms(speed.getValue(), speed.getUnit()) *
                 TimeUnits.unitAs_s(time.getValue(), time.getUnit());
         return new Distance(format(value), "m");
     }
 
-    public Distance[] getDistancesAsArray() {
+    private Distance[] getDistancesAsArray() {
         return list.stream().map(this::getDistance).toArray(Distance[]::new);
     }
 
