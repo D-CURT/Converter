@@ -49,22 +49,29 @@ public class Converter {
     public List<Speed> getSortedSpeedsList() {
          return list.stream()
                  .sorted(new SpeedComparator())
-                 .sorted(new SpeedUnitComparator()).collect(Collectors.toList());
+                 .sorted(new SpeedUnitComparator())
+                 .collect(Collectors.toList());
     }
 
     private Distance getDistance(Speed speed) {
         double value = SpeedUnits.unitIn_ms(speed.getValue(), speed.getUnit()) *
-                TimeUnits.unitAs_s(time.getValue(), time.getUnit());
+                TimeUnits.unitIn_s(time.getValue(), time.getUnit());
         return new Distance(format(value), "m");
     }
 
     private Distance[] getDistancesAsArray() {
-        return list.stream().map(this::getDistance).toArray(Distance[]::new);
+        return list.stream()
+                   .map(this::getDistance)
+                   .toArray(Distance[]::new);
     }
 
     public Distance[] getSortedDistances(boolean reversed) {
-        return reversed ? Arrays.stream(getDistancesAsArray()).sorted().toArray(Distance[]::new) :
-                          Arrays.stream(getDistancesAsArray()).sorted(Collections.reverseOrder()).toArray(Distance[]::new);
+        return reversed ? Arrays.stream(getDistancesAsArray())
+                                .sorted()
+                                .toArray(Distance[]::new)
+                        : Arrays.stream(getDistancesAsArray())
+                                .sorted(Collections.reverseOrder())
+                                .toArray(Distance[]::new);
     }
 
     private String format(Double n) {

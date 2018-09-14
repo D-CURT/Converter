@@ -21,7 +21,7 @@ public enum TimeUnits {
         return Arrays.stream(values()).filter(timeUnits -> timeUnits.unit.equals(s)).findFirst().orElse(null);
     }
 
-    public static double unitAs_s(String value, String unit) {
+    public static double unitIn_s(String value, String unit) {
         return getUnit(unit).function.convert(Double.parseDouble(value));
     }
 
