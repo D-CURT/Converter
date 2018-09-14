@@ -8,6 +8,8 @@ import beans.enums.TimeUnits;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -36,6 +38,11 @@ public class Converter {
 
     public Distance[] getDistancesAsArray() {
         return list.stream().map(this::getDistance).toArray(Distance[]::new);
+    }
+
+    public Distance[] getSortedDistances(boolean reversed) {
+        return reversed ? Arrays.stream(getDistancesAsArray()).sorted().toArray(Distance[]::new) :
+                          Arrays.stream(getDistancesAsArray()).sorted(Collections.reverseOrder()).toArray(Distance[]::new);
     }
 
     private String format(Double n) {

@@ -25,8 +25,10 @@ public class Runner {
             System.out.println("Outputting of the speeds list to console:");
             converter.speedsAsList().forEach(speed -> System.out.println(converter.speedAs_ms(speed)));
 
-            System.out.println(Arrays.toString(converter.getDistancesAsArray()));
+            System.out.println("\ntask 3:");
 
+            System.out.println("Outputting of the sorted distances array:");
+            Arrays.stream(converter.getSortedDistances(false)).forEach(System.out::println);
         } catch (IOException e) {
             e.printStackTrace();
         }
