@@ -7,6 +7,7 @@ import services.factory.ConverterFactory;
 import support.DataReader;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class Runner {
@@ -24,7 +25,7 @@ public class Runner {
             System.out.println("Outputting of the speeds list to console:");
             converter.speedsAsList().forEach(speed -> System.out.println(converter.speedAs_ms(speed)));
 
-            System.out.println(converter.getDistance(new Time("1", "h"), new Speed("120", "kmh")));
+            System.out.println(Arrays.toString(converter.getDistancesAsArray()));
 
         } catch (IOException e) {
             e.printStackTrace();

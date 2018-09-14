@@ -1,5 +1,6 @@
 package services;
 
+import beans.Distance;
 import beans.Speed;
 import beans.Time;
 import beans.enums.SpeedUnits;
@@ -7,6 +8,8 @@ import beans.enums.TimeUnits;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -27,9 +30,14 @@ public class Converter {
         return speed + " = " + format(SpeedUnits.unitAs_ms(speed.getValue(), speed.getUnit())) + "_in_ms";
     }
 
-    public String getDistance(Time time, Speed speed) {
-        return format(SpeedUnits.unitAs_ms(speed.getValue(), speed.getUnit()) *
-                TimeUnits.unitAs_s(time.getValue(), time.getUnit())) + "_in_m";
+    public Distance getDistance(Speed speed) {
+        double value = SpeedUnits.unitAs_ms(speed.getValue(), speed.getUnit()) *
+                TimeUnits.unitAs_s(time.getValue(), time.getUnit());
+        return new Distance(format(value), "m");
+    }
+
+    public Distance[] getDistancesAsArray() {
+        return list.stream().map(this::getDistance).toArray(Distance[]::new);
     }
 
     private String format(Double n) {
