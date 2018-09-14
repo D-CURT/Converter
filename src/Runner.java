@@ -43,7 +43,6 @@ public class Runner {
 
             System.out.println("Outputting of the sorted speeds list:");
             converter.getSortedSpeedsList().forEach(System.out::println);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
