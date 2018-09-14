@@ -5,10 +5,10 @@ import interfaces.UnitConversion;
 import java.util.Arrays;
 
 public enum SpeedUnits {
-    MPH("mph", n -> n * 0.44704, 3),
-    KMH("kmh", n -> n * 0.27777777777778, 4),
-    KH("kh", n -> n * 0.51444444444, 2),
-    MS("ms", n -> n,  1);
+    KMH("kmh", n -> n * 0.27777777777778, 1),
+    MPH("mph", n -> n * 0.44704, 2),
+    KH("kh", n -> n * 0.51444444444, 3),
+    MS("ms", n -> n,  4);
 
     private final String unit;
     private final UnitConversion function;
@@ -30,11 +30,6 @@ public enum SpeedUnits {
 
     public int getPriority() {
         return priority;
-    }
-
-    public static int getPriority(String unit) {
-        SpeedUnits current =  getUnit(unit);
-        return current != null ? current.priority : 0;
     }
 
     public static boolean isSpeedUnit(String s) {
