@@ -1,7 +1,3 @@
-import beans.Speed;
-import beans.Time;
-import beans.enums.SpeedUnits;
-import beans.enums.TimeUnits;
 import services.Converter;
 import services.factory.ConverterFactory;
 import support.DataReader;
