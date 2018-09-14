@@ -1,3 +1,4 @@
+import beans.Distance;
 import services.Converter;
 import services.factory.ConverterFactory;
 import support.DataReader;
@@ -23,8 +24,24 @@ public class Runner {
 
             System.out.println("\ntask 3:");
 
+            System.out.println("Getting of a sorted distances array from the converter...");
+            Distance[] sortedDistances = converter.getSortedDistances(false);
+
             System.out.println("Outputting of the sorted distances array:");
-            Arrays.stream(converter.getSortedDistances(false)).forEach(System.out::println);
+            Arrays.stream(sortedDistances).forEach(System.out::println);
+
+
+            System.out.println("\ntask 4:");
+
+            System.out.print("Has the array one or more values from 500 to 501 meters: ");
+            boolean flag = false;
+            for (Distance distance: sortedDistances) {
+                double value = distance.getDoubleValue();
+                if (value >= 500 && value <= 501) flag = true;
+            }
+            System.out.println(flag ? "yes" : "no");
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
