@@ -8,8 +8,6 @@ import beans.enums.TimeUnits;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -30,7 +28,7 @@ public class Converter {
         return speed + " = " + format(SpeedUnits.unitAs_ms(speed.getValue(), speed.getUnit())) + "_in_ms";
     }
 
-    public Distance getDistance(Speed speed) {
+    private Distance getDistance(Speed speed) {
         double value = SpeedUnits.unitAs_ms(speed.getValue(), speed.getUnit()) *
                 TimeUnits.unitAs_s(time.getValue(), time.getUnit());
         return new Distance(format(value), "m");
