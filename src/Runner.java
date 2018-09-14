@@ -1,6 +1,7 @@
 import beans.Distance;
 import services.Converter;
 import support.DataReader;
+import support.comparators.SpeedComparator;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -20,7 +21,7 @@ public class Runner {
             System.out.println("\ntask 2:");
 
             System.out.println("Outputting of the speeds list to console:");
-            converter.speedsAsList().forEach(speed -> System.out.println(converter.speedAs_ms(speed)));
+            converter.speedsAsList().forEach(speed -> System.out.println(converter.speedIn_ms(speed)));
 
             System.out.println("\ntask 3:");
 
@@ -39,6 +40,8 @@ public class Runner {
                 if (value >= 500 && value <= 501) flag = true;
             }
             System.out.println(flag ? "yes" : "no");
+
+            converter.speedsAsList().stream().sorted(new SpeedComparator()).forEach(System.out::println);
 
         } catch (IOException e) {
             e.printStackTrace();

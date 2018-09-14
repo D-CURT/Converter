@@ -7,7 +7,7 @@ public class Distance extends Essence implements Comparable<Distance>{
     }
 
     public Double getDoubleValue() {
-        return Double.parseDouble(super.getValue());
+        return Double.parseDouble(getValue());
     }
 
     @Override

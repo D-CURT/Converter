@@ -24,8 +24,8 @@ public class Converter {
         return list;
     }
 
-    public String speedAs_ms(Speed speed) {
-        return speed + " = " + format(SpeedUnits.unitAs_ms(speed.getValue(), speed.getUnit())) + "_in_ms";
+    public String speedIn_ms(Speed speed) {
+        return speed + " = " + format(SpeedUnits.unitIn_ms(speed.getValue(), speed.getUnit())) + "_in_ms";
     }
 
     public static Converter getConverter(List<String> lines) {
@@ -44,7 +44,7 @@ public class Converter {
     }
 
     private Distance getDistance(Speed speed) {
-        double value = SpeedUnits.unitAs_ms(speed.getValue(), speed.getUnit()) *
+        double value = SpeedUnits.unitIn_ms(speed.getValue(), speed.getUnit()) *
                 TimeUnits.unitAs_s(time.getValue(), time.getUnit());
         return new Distance(format(value), "m");
     }
