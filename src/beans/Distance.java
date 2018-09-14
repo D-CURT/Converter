@@ -1,6 +1,6 @@
 package beans;
 
-public class Distance extends Essence implements Comparable<Distance>{
+public class Distance extends Essence{
 
     public Distance(String value, String unit) {
         super(value, unit);
@@ -9,10 +9,5 @@ public class Distance extends Essence implements Comparable<Distance>{
     @Override
     public String toString() {
         return getValue() + "_in_" + getUnit();
-    }
-
-    @Override
-    public int compareTo(Distance o) {
-        return getValue().compareTo(o.getValue());
     }
 }
