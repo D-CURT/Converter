@@ -28,7 +28,7 @@ public class Converter {
     }
 
     public String speedIn_ms(Speed speed) {
-        return speed + " = " + format(SpeedUnits.unitIn_ms(speed.getValue(), speed.getUnit())) + "_in_ms";
+        return speed + " = " + format(SpeedUnits.unitIn_ms(speed.getValue(), speed.getUnit().getValue())) + "_in_ms";
     }
 
     public static Converter getConverter(List<String> lines) {
@@ -48,14 +48,14 @@ public class Converter {
 
     public List<Speed> getSortedSpeedsList() {
          return list.stream()
-                    .sorted(new SpeedComparator())
-                    .sorted(new SpeedUnitComparator())
-                    .collect(Collectors.toList());
+                 .sorted(new SpeedComparator())
+                 .sorted(new SpeedUnitComparator())
+                 .collect(Collectors.toList());
     }
 
     private Distance getDistance(Speed speed) {
-        double value = SpeedUnits.unitIn_ms(speed.getValue(), speed.getUnit()) *
-                TimeUnits.unitIn_s(time.getValue(), time.getUnit());
+        double value = SpeedUnits.unitIn_ms(speed.getValue(), speed.getUnit().getValue()) *
+                TimeUnits.unitIn_s(time.getValue(), time.getUnit().getValue());
         return new Distance(format(value), "m");
     }
 

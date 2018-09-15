@@ -1,9 +1,11 @@
 package beans;
 
 public class Distance extends Essence implements Comparable<Distance>{
+    private String unit;
 
     public Distance(String value, String unit) {
-        super(value, unit);
+        super(value);
+        this.unit = unit;
     }
 
     public Double getDoubleValue() {
@@ -12,7 +14,7 @@ public class Distance extends Essence implements Comparable<Distance>{
 
     @Override
     public String toString() {
-        return getValue() + "_in_" + getUnit();
+        return getValue() + "_in_" + unit;
     }
 
     @Override

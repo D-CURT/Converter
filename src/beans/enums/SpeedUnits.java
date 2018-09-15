@@ -10,18 +10,22 @@ public enum SpeedUnits {
     KH("kh", n -> n * 0.51444444444, 3),
     MS("ms", n -> n,  4);
 
-    private final String unit;
+    private final String value;
     private final UnitConversion function;
     private final int priority;
 
-    SpeedUnits(String unit, UnitConversion function, int priority) {
-        this.unit = unit;
+    SpeedUnits(String value, UnitConversion function, int priority) {
+        this.value = value;
         this.function = function;
         this.priority = priority;
     }
 
+    public String getValue() {
+        return value;
+    }
+
     public static SpeedUnits getUnit(String s) {
-        return Arrays.stream(values()).filter(speedUnits -> speedUnits.unit.equals(s)).findFirst().orElse(null);
+        return Arrays.stream(values()).filter(speedUnits -> speedUnits.value.equals(s)).findFirst().orElse(null);
     }
 
     public static double unitIn_ms(String value, String unit) {

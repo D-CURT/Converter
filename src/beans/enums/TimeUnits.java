@@ -9,16 +9,20 @@ public enum TimeUnits {
     M("m", n -> n * 60),
     S("s", n -> n);
 
-    private final String unit;
+    private final String value;
     private final UnitConversion function;
 
-    TimeUnits(String unit, UnitConversion function) {
-        this.unit = unit;
+    TimeUnits(String value, UnitConversion function) {
+        this.value = value;
         this.function = function;
     }
 
+    public String getValue() {
+        return value;
+    }
+
     public static TimeUnits getUnit(String s) {
-        return Arrays.stream(values()).filter(timeUnits -> timeUnits.unit.equals(s)).findFirst().orElse(null);
+        return Arrays.stream(values()).filter(timeUnits -> timeUnits.value.equals(s)).findFirst().orElse(null);
     }
 
     public static double unitIn_s(String value, String unit) {
