@@ -10,6 +10,10 @@ public class Time extends Essence{
         this.unit = TimeUnits.getUnit(unit);
     }
 
+    public int getIntValue() {
+        return Integer.parseInt(getValue());
+    }
+
     public TimeUnits getUnit() {
         return unit;
     }

@@ -1,23 +1,20 @@
 package beans.enums;
 
 import beans.Speed;
-import interfaces.UnitConversion;
 
 import java.util.Arrays;
 
 public enum SpeedUnits {
-    KMH("kmh", n -> n * 0.27777777777778, 1),
-    MPH("mph", n -> n * 0.44704, 2),
-    KH("kn", n -> n * 0.51444444444, 3),
-    MS("ms", n -> n,  4);
+    KMH("kmh", 1),
+    MPH("mph", 2),
+    KH("kn", 3),
+    MS("ms", 4);
 
     private final String name;
-    private final UnitConversion function;
     private final int priority;
 
-    SpeedUnits(String name, UnitConversion function, int priority) {
+    SpeedUnits(String name, int priority) {
         this.name = name;
-        this.function = function;
         this.priority = priority;
     }
 
@@ -30,7 +27,12 @@ public enum SpeedUnits {
     }
 
     public static double unitIn_ms(Speed speed) {
-        return getUnit(speed.getUnit().name).function.convert(Double.parseDouble(speed.getValue()));
+        switch (speed.getUnit().name) {
+            case "kmh" : return speed.getIntValue() * 0.27777777777778;
+            case "mph" : return speed.getIntValue() * 0.44704;
+            case "kn" : return speed.getIntValue() * 0.51444444444;
+            default : return speed.getIntValue();
+        }
     }
 
     public int getPriority() {

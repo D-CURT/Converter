@@ -1,21 +1,18 @@
 package beans.enums;
 
 import beans.Time;
-import interfaces.UnitConversion;
 
 import java.util.Arrays;
 
 public enum TimeUnits {
-    H("h", n -> n * 3600),
-    M("m", n -> n * 60),
-    S("s", n -> n);
+    H("h"),
+    M("m"),
+    S("s");
 
     private final String name;
-    private final UnitConversion function;
 
-    TimeUnits(String name, UnitConversion function) {
+    TimeUnits(String name) {
         this.name = name;
-        this.function = function;
     }
 
     public String getName() {
@@ -27,7 +24,11 @@ public enum TimeUnits {
     }
 
     public static double unitIn_s(Time time) {
-        return getUnit(time.getUnit().name).function.convert(Double.parseDouble(time.getValue()));
+        switch (time.getUnit().name) {
+            case "h" : return time.getIntValue() * 3600;
+            case "m" : return time.getIntValue() * 60;
+            default : return time.getIntValue();
+        }
     }
 
     public static boolean isTimeUnit(String s) {
