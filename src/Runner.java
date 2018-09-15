@@ -43,8 +43,6 @@ public class Runner {
 
             System.out.println("Outputting of the sorted speeds list:");
             converter.getSortedSpeedsList().forEach(System.out::println);
-//92599.99999920001
-            System.out.println(92599.99999920001 % 1 == 0 || ((92599.99999920001 * 1000 % 1000) < 5));
         } catch (IOException e) {
             e.printStackTrace();
         }
