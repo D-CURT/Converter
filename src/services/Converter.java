@@ -78,10 +78,21 @@ public class Converter {
 
     private String format(Double n) {
         String format;
+        final String empty = "";
+        String pattern0 = "##0";
+        String pattern1 = "##0.0";
+        String pattern2 = "##0.00";
         Locale locale = new Locale("en", "UK");
         DecimalFormatSymbols dfs = new DecimalFormatSymbols(locale);
-        format = n % 1 == 0 ? "##0" : "##0.00";
+        format = n % 1 == 0 ? pattern0 : pattern2;
         DecimalFormat df = new DecimalFormat(format, dfs);
-        return df.format(n);
+        String tmp = df.format(n);
+        n = Double.parseDouble(tmp);
+        format = (n * 1000 % 1000) < 5 ? pattern0 : (n * 1000 % 100) < 5 ? pattern1 : empty;
+        if (format.equals(empty)) return tmp;
+        else {
+            df.applyPattern(format);
+            return df.format(n);
+        }
     }
 }
