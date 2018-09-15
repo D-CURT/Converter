@@ -1,6 +1,7 @@
 package services;
 
 import beans.Distance;
+import beans.Essence;
 import beans.Speed;
 import beans.Time;
 import beans.enums.SpeedUnits;
@@ -28,19 +29,21 @@ public class Converter {
     }
 
     public String speedIn_ms(Speed speed) {
-        return speed + " = " + format(SpeedUnits.unitIn_ms(speed.getValue(), speed.getUnit().getValue())) + "_in_ms";
+        return speed + " = " + format(SpeedUnits.unitIn_ms(speed)) + "_in_ms";
     }
 
     public static Converter getConverter(List<String> lines) {
         List<Speed> list = new ArrayList<>();
         boolean firstLine = true;
+        Essence essence;
         Time time = null;
 
         for (String line: lines) {
+            essence = EssenceFactory.getEssence(line);
             if (firstLine) {
-                time = (Time) EssenceFactory.getEssence(line);
+                time = (Time) essence;
                 firstLine = false;
-            } else list.add((Speed) EssenceFactory.getEssence(line));
+            } else list.add((Speed) essence);
         }
 
         return new Converter(list, time);
@@ -54,8 +57,7 @@ public class Converter {
     }
 
     private Distance getDistance(Speed speed) {
-        double value = SpeedUnits.unitIn_ms(speed.getValue(), speed.getUnit().getValue()) *
-                TimeUnits.unitIn_s(time.getValue(), time.getUnit().getValue());
+        double value = SpeedUnits.unitIn_ms(speed) * TimeUnits.unitIn_s(time);
         return new Distance(format(value), "m");
     }
 

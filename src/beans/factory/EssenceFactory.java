@@ -13,6 +13,6 @@ public class EssenceFactory {
         String[] fields = s.split(" ");
         return (isTimeUnit(fields[1])) ? new Time(fields[0], fields[1]) :
                 isSpeedUnit(fields[1]) ? new Speed(fields[0], fields[1])
-                                       : new Distance(fields[0], fields[1]);
+                        : new Distance(fields[0], fields[1]);
     }
 }
