@@ -24,6 +24,6 @@ public class Speed extends Essence{
 
     @Override
     public String toString() {
-        return super.toString() + " " + unit.getName();
+        return getValue() + " " + unit.getName();
     }
 }

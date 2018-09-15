@@ -8,7 +8,7 @@ import java.util.Arrays;
 public enum SpeedUnits {
     KMH("kmh", n -> n * 0.27777777777778, 1),
     MPH("mph", n -> n * 0.44704, 2),
-    KH("kh", n -> n * 0.51444444444, 3),
+    KH("kn", n -> n * 0.51444444444, 3),
     MS("ms", n -> n,  4);
 
     private final String name;

@@ -16,6 +16,6 @@ public class Time extends Essence{
 
     @Override
     public String toString() {
-        return super.toString();
+        return getValue() + " " + getUnit();
     }
 }

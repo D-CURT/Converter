@@ -3,10 +3,10 @@
 120 kmh
 60 kmh
 12 mph
-36 kh
+36 kn
 50 mph
 400 ms
-50 kh
+50 kn
 4 ms
-35 kh
+35 kn
 30 mph
