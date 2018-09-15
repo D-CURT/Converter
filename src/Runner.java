@@ -13,7 +13,7 @@ public class Runner {
             System.out.println("Reading a file and creating a list of strings...");
             List<String> list = new DataReader(args[0]).fileAsList();
 
-            System.out.println("Creating a converter, which contains a speeds list and a time, received from file, as fields...");
+            System.out.println("Creating a converter, which contains a speeds list and a time, received from the file, as fields...");
             Converter converter = Converter.getConverter(list);
 
             System.out.println("\ntask 2:");
