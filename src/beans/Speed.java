@@ -18,10 +18,6 @@ public class Speed extends Essence{
         return unit;
     }
 
-    public int getUnitPriority() {
-        return unit.getPriority();
-    }
-
     @Override
     public String toString() {
         return getValue() + " " + unit.getName();

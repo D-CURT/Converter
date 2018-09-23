@@ -5,17 +5,15 @@ import beans.Speed;
 import java.util.Arrays;
 
 public enum SpeedUnits {
-    KMH("kmh", 1),
-    MPH("mph", 2),
-    KH("kn", 3),
-    MS("ms", 4);
+    KMH("kmh"),
+    MPH("mph"),
+    KH("kn"),
+    MS("ms");
 
     private final String name;
-    private final int priority;
 
-    SpeedUnits(String name, int priority) {
+    SpeedUnits(String name) {
         this.name = name;
-        this.priority = priority;
     }
 
     public String getName() {
@@ -33,10 +31,6 @@ public enum SpeedUnits {
             case "kn" : return speed.getIntValue() * 0.51444444444;
             default : return speed.getIntValue();
         }
-    }
-
-    public int getPriority() {
-        return priority;
     }
 
     public static boolean isSpeedUnit(String s) {
