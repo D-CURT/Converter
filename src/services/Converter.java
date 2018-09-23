@@ -29,7 +29,7 @@ public class Converter {
     }
 
     public String speedIn_ms(Speed speed) {
-        return speed + " = " + format(SpeedUnits.unitIn_ms(speed)) + "_in_ms";
+        return speed + " = " + format(SpeedUnits.unitIn_ms(speed)) + " ms";
     }
 
     public static Converter getConverter(List<String> lines) {
@@ -80,8 +80,18 @@ public class Converter {
         String format;
         Locale locale = new Locale("en", "UK");
         DecimalFormatSymbols dfs = new DecimalFormatSymbols(locale);
-        format = n % 1 == 0 ? "##0" : "##0.00";
+        format = getFormat(n, false);
         DecimalFormat df = new DecimalFormat(format, dfs);
-        return df.format(n);
+        String result = df.format(n);
+        n = Double.parseDouble(result);
+        if (n * 1000 % 1000 == 0) {
+            df.applyPattern(getFormat(n, true));
+            return df.format(n);
+        }
+        return result;
+    }
+
+    private String getFormat(Double n, boolean alter) {
+        return n % 1 == 0 || alter ? "##0" : "##0.00";
     }
 }
