@@ -56,14 +56,14 @@ public class Converter {
                  .collect(Collectors.toList());
     }
 
-    private Distance getDistance(Speed speed) {
+    private Distance getDistanceIn_m(Speed speed) {
         double value = SpeedUnits.unitIn_ms(speed) * TimeUnits.unitIn_s(time);
         return (Distance) EssenceFactory.getEssence(format(value) + " m");
     }
 
     private Distance[] getDistancesAsArray() {
         return list.stream()
-                   .map(this::getDistance)
+                   .map(this::getDistanceIn_m)
                    .toArray(Distance[]::new);
     }
 
