@@ -58,7 +58,7 @@ public class Converter {
 
     private Distance getDistance(Speed speed) {
         double value = SpeedUnits.unitIn_ms(speed) * TimeUnits.unitIn_s(time);
-        return new Distance(format(value), "m");
+        return (Distance) EssenceFactory.getEssence(format(value) + " m");
     }
 
     private Distance[] getDistancesAsArray() {

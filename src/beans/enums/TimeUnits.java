@@ -5,9 +5,9 @@ import beans.Time;
 import java.util.Arrays;
 
 public enum TimeUnits {
-    H("h"),
-    M("m"),
-    S("s");
+    HOUR("h"),
+    MIN("min"),
+    SEC("sec");
 
     private final String name;
 
@@ -26,7 +26,7 @@ public enum TimeUnits {
     public static double unitIn_s(Time time) {
         switch (time.getUnit().name) {
             case "h" : return time.getIntValue() * 3600;
-            case "m" : return time.getIntValue() * 60;
+            case "min" : return time.getIntValue() * 60;
             default : return time.getIntValue();
         }
     }

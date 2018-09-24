@@ -1,4 +1,4 @@
-3600 s
+3600 sec
 15 mph
 120 kmh
 60 kmh
