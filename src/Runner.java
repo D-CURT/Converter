@@ -2,7 +2,7 @@ import beans.Distance;
 import services.Converter;
 import services.DistanceCalculator;
 import support.DataReader;
-import support.ServiceCreator;
+import support.implementations.ServiceImplementation;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -17,7 +17,7 @@ public class Runner {
             List<String> list = new DataReader(args[0]).fileAsList();
 
             System.out.println("Creating a converter, which contains a speeds list and a time, received from the file, as fields...");
-            Converter converter = ServiceCreator.getConverter(list);
+            Converter converter = ServiceImplementation.getConverter(list);
 
             System.out.println("\ntask 2:");
 
@@ -27,7 +27,7 @@ public class Runner {
             System.out.println("\ntask 3:");
 
             System.out.println("Getting of a sorted distances array from the converter...");
-            DistanceCalculator calculator = ServiceCreator.getDistanceCalculator(list);
+            DistanceCalculator calculator = ServiceImplementation.getDistanceCalculator(list);
             Distance[] sortedDistances = calculator.getSortedDistances(false);
 
             System.out.println("Outputting of the sorted distances array:");

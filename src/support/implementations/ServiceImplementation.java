@@ -1,4 +1,4 @@
-package support;
+package support.implementations;
 
 import beans.Essence;
 import beans.Speed;
@@ -10,7 +10,7 @@ import services.DistanceCalculator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceCreator {
+public class ServiceImplementation {
 
     public static Converter getConverter(List<String> lines) {
         List<Speed> list = new ArrayList<>();
