@@ -1,10 +1,8 @@
 package services;
 
-import beans.Essence;
 import beans.Speed;
 import beans.Time;
 import beans.enums.SpeedUnits;
-import beans.factory.EssenceFactory;
 import support.comparators.SpeedComparator;
 import support.comparators.SpeedUnitComparator;
 
