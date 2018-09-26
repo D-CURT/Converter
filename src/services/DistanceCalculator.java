@@ -9,7 +9,6 @@ import beans.enums.TimeUnits;
 import factories.EssenceFactory;
 import services.interfaces.Service;
 import support.sections.Operations;
-import support.sections.Services;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -47,7 +46,7 @@ public class DistanceCalculator implements Service {
     }
 
     @Override
-    public Result action(Services section, Operations service) {
+    public List<Result> action(Operations service) {
         return null;
     }
 }

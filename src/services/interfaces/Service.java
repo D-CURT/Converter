@@ -2,8 +2,9 @@ package services.interfaces;
 
 import beans.Result;
 import support.sections.Operations;
-import support.sections.Services;
+
+import java.util.List;
 
 public interface Service {
-    Result action(Services section, Operations service);
+    List<Result> action(Operations service);
 }

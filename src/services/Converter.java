@@ -7,7 +7,6 @@ import services.interfaces.Service;
 import support.comparators.SpeedComparator;
 import support.comparators.SpeedUnitComparator;
 import support.sections.Operations;
-import support.sections.Services;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -37,7 +36,7 @@ public class Converter implements Service {
     }
 
     @Override
-    public Result action(Services section, Operations service) {
+    public List<Result> action(Operations service) {
         return null;
     }
 }
