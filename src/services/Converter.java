@@ -31,9 +31,9 @@ public class Converter implements Service {
 
     public List<Speed> getSortedSpeedsList() {
          return list.stream()
-                 .sorted(new SpeedComparator())
-                 .sorted(new SpeedUnitComparator())
-                 .collect(Collectors.toList());
+                    .sorted(new SpeedComparator())
+                    .sorted(new SpeedUnitComparator())
+                    .collect(Collectors.toList());
     }
 
     @Override

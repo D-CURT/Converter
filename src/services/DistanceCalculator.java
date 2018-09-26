@@ -33,17 +33,17 @@ public class DistanceCalculator implements Service {
 
     private Distance[] getDistancesAsArray() {
         return list.stream()
-                .map(this::getDistanceIn_m)
-                .toArray(Distance[]::new);
+                   .map(this::getDistanceIn_m)
+                   .toArray(Distance[]::new);
     }
 
     public Distance[] getSortedDistances(boolean reversed) {
         return reversed ? Arrays.stream(getDistancesAsArray())
-                .sorted()
-                .toArray(Distance[]::new)
-                : Arrays.stream(getDistancesAsArray())
-                .sorted(Collections.reverseOrder())
-                .toArray(Distance[]::new);
+                                .sorted()
+                                .toArray(Distance[]::new)
+                        : Arrays.stream(getDistancesAsArray())
+                                .sorted(Collections.reverseOrder())
+                                .toArray(Distance[]::new);
     }
 
     @Override
