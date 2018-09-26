@@ -1,5 +1,5 @@
 package support.sections;
 
-public enum Operations {
+public enum ConverterServices {
     TO_MS
 }

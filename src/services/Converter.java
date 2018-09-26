@@ -6,7 +6,7 @@ import beans.enums.SpeedUnits;
 import services.interfaces.Service;
 import support.comparators.SpeedComparator;
 import support.comparators.SpeedUnitComparator;
-import support.sections.Operations;
+import support.sections.ConverterServices;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -36,7 +36,12 @@ public class Converter implements Service {
     }
 
     @Override
-    public List<Result> action(Operations service) {
-        return null;
+    public List<Result> action(Enum<?> service) {
+        List<Result> results = new ArrayList<>();
+        Iterator iterator = getSortedSpeedsList().iterator();
+        while (iterator.hasNext()) {
+
+        }
+        return results;
     }
 }

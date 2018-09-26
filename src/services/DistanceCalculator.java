@@ -8,7 +8,7 @@ import beans.enums.SpeedUnits;
 import beans.enums.TimeUnits;
 import factories.EssenceFactory;
 import services.interfaces.Service;
-import support.sections.Operations;
+import support.sections.ConverterServices;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -46,7 +46,7 @@ public class DistanceCalculator implements Service {
     }
 
     @Override
-    public List<Result> action(Operations service) {
+    public List<Result> action(Enum<?> service) {
         return null;
     }
 }
