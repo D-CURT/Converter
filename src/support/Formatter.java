@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
-public class TextFormatter {
+public class Formatter {
     public static String format(Double n) {
         String format;
         Locale locale = new Locale("en", "UK");

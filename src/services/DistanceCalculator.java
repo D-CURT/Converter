@@ -1,20 +1,23 @@
 package services;
 
 import beans.Distance;
+import beans.Result;
 import beans.Speed;
 import beans.Time;
 import beans.enums.SpeedUnits;
 import beans.enums.TimeUnits;
-import beans.factory.EssenceFactory;
-import support.implementations.ServiceImplementation;
+import factories.EssenceFactory;
+import services.interfaces.Service;
+import support.sections.Operations;
+import support.sections.Services;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static support.TextFormatter.format;
+import static support.Formatter.format;
 
-public class DistanceCalculator extends ServiceImplementation {
+public class DistanceCalculator implements Service {
     private List<Speed> list;
     private Time time;
 
@@ -41,5 +44,10 @@ public class DistanceCalculator extends ServiceImplementation {
                 : Arrays.stream(getDistancesAsArray())
                 .sorted(Collections.reverseOrder())
                 .toArray(Distance[]::new);
+    }
+
+    @Override
+    public Result action(Services section, Operations service) {
+        return null;
     }
 }

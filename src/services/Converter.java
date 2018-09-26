@@ -1,24 +1,24 @@
 package services;
 
+import beans.Result;
 import beans.Speed;
-import beans.Time;
 import beans.enums.SpeedUnits;
+import services.interfaces.Service;
 import support.comparators.SpeedComparator;
 import support.comparators.SpeedUnitComparator;
-import support.implementations.ServiceImplementation;
+import support.sections.Operations;
+import support.sections.Services;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static support.TextFormatter.format;
+import static support.Formatter.format;
 
-public class Converter extends ServiceImplementation {
+public class Converter implements Service {
     private List<Speed> list;
-    private Time time;
 
-    public Converter(List<Speed> list, Time time) {
+    public Converter(List<Speed> list) {
         this.list = list;
-        this.time = time;
     }
 
     public List<Speed> speedsAsList() {
@@ -34,5 +34,10 @@ public class Converter extends ServiceImplementation {
                  .sorted(new SpeedComparator())
                  .sorted(new SpeedUnitComparator())
                  .collect(Collectors.toList());
+    }
+
+    @Override
+    public Result action(Services section, Operations service) {
+        return null;
     }
 }

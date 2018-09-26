@@ -1,4 +1,4 @@
-package beans.factory;
+package factories;
 
 import beans.Distance;
 import beans.Essence;
