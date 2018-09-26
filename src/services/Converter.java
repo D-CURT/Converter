@@ -5,13 +5,14 @@ import beans.Time;
 import beans.enums.SpeedUnits;
 import support.comparators.SpeedComparator;
 import support.comparators.SpeedUnitComparator;
+import support.implementations.ServiceImplementation;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static support.TextFormatter.format;
 
-public class Converter {
+public class Converter extends ServiceImplementation {
     private List<Speed> list;
     private Time time;
 

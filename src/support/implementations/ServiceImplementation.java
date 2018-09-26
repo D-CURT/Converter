@@ -6,11 +6,16 @@ import beans.Time;
 import beans.factory.EssenceFactory;
 import services.Converter;
 import services.DistanceCalculator;
+import support.sections.Services;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceImplementation {
+
+    public ServiceImplementation implement(List<String> lines, Services section) {
+        return section == Services.CONVERT ? getConverter(lines) : getDistanceCalculator(lines);
+    }
 
     public static Converter getConverter(List<String> lines) {
         List<Speed> list = new ArrayList<>();

@@ -6,6 +6,7 @@ import beans.Time;
 import beans.enums.SpeedUnits;
 import beans.enums.TimeUnits;
 import beans.factory.EssenceFactory;
+import support.implementations.ServiceImplementation;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import static support.TextFormatter.format;
 
-public class DistanceCalculator {
+public class DistanceCalculator extends ServiceImplementation {
     private List<Speed> list;
     private Time time;
 
