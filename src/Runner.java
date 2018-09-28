@@ -1,7 +1,6 @@
 import beans.Distance;
 import services.Converter;
 import services.DistanceCalculator;
-import sun.swing.SwingUtilities2;
 import support.DataReader;
 import factories.ServiceFactory;
 import support.sections.Services;
