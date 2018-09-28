@@ -3,9 +3,11 @@ package services;
 import beans.Result;
 import beans.Speed;
 import beans.enums.SpeedUnits;
+import exceptions.ConverterException;
 import services.interfaces.Service;
 import support.comparators.SpeedComparator;
 import support.comparators.SpeedUnitComparator;
+import support.sections.ConverterServices;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -23,7 +25,7 @@ public class Converter implements Service {
         return list;
     }
 
-    public String speedIn_ms(Speed speed) {
+    public static String speedIn_ms(Speed speed) {
         return speed + " = " + format(SpeedUnits.unitIn_ms(speed)) + " ms";
     }
 
@@ -37,9 +39,16 @@ public class Converter implements Service {
     @Override
     public List<Result> action(Enum<?> service) {
         List<Result> results = new ArrayList<>();
-        Iterator iterator = getSortedSpeedsList().iterator();
-        while (iterator.hasNext()) {
-
+        String applied;
+        Result result;
+        for (Speed speed: getSortedSpeedsList()) {
+            try {
+                applied = (String) ConverterServices.getService(service).getFunction().apply(speed);
+                result = new Result(speed.toString(), applied);
+            } catch (ConverterException e) {
+                result = new Result(speed.toString(), e);
+            }
+            results.add(result);
         }
         return results;
     }

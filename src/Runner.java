@@ -23,7 +23,7 @@ public class Runner {
             System.out.println("\ntask 2:");
 
             System.out.println("Outputting of the speeds list to console:");
-            converter.speedsAsList().forEach(speed -> System.out.println(converter.speedIn_ms(speed)));
+            converter.speedsAsList().forEach(speed -> System.out.println(Converter.speedIn_ms(speed)));
 
             System.out.println("\ntask 3:");
 
