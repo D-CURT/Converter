@@ -13,11 +13,11 @@ import java.util.List;
 
 public class ServiceFactory {
 
-    /*public static Service getService(List<String> lines, Services section) {
-        return section == Services.CONVERT ? getConverter(lines) : getDistanceCalculator(lines);
+    public static Service getService(List<String> lines, Services section) {
+        return section == Services.CONVERT ? new Converter(lines) : getDistanceCalculator(lines);
     }
 
-    private static Converter getConverter(List<String> lines) {
+    /*private static Converter getConverter(List<String> lines) {
         List<Speed> list = new ArrayList<>();
         boolean firstLine = true;
         Essence essence;

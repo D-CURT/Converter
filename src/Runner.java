@@ -49,7 +49,7 @@ public class Runner {
 
             System.out.println("Outputting of the sorted speeds list:");
             converter.getSortedSpeedsList().forEach(System.out::println);*/
-            System.out.println(new Converter(list).action(ConverterServices.TO_MS));
+            System.out.println(ServiceFactory.getService(list, Services.CONVERT).action(ConverterServices.TO_MS));
         } catch (IOException e) {
             e.printStackTrace();
         }

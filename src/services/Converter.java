@@ -3,7 +3,6 @@ package services;
 import beans.Essence;
 import beans.Result;
 import beans.Speed;
-import beans.Time;
 import beans.enums.SpeedUnits;
 import exceptions.ConverterException;
 import factories.EssenceFactory;
@@ -16,7 +15,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static support.Formatter.format;
-import static support.sections.ConverterServices.isConverterService;
 
 public class Converter implements Service {
     private List<String> strings;
@@ -57,8 +55,7 @@ public class Converter implements Service {
         String applied;
         try {
             essence = EssenceFactory.getEssence(s);
-            applied = ConverterServices.getService(service).getFunction()
-                    .apply(essence);
+            applied = ConverterServices.getService(service).getFunction().apply(essence);
             return new Result(s, applied);
         } catch (ConverterException e) {
             return new Result(s, e);
