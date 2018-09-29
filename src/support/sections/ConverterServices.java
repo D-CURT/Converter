@@ -1,5 +1,6 @@
 package support.sections;
 
+import beans.Essence;
 import beans.Speed;
 import beans.enums.SpeedUnits;
 import services.Converter;
@@ -10,13 +11,13 @@ import java.util.function.Function;
 public enum ConverterServices {
     TO_MS(Converter::speedIn_ms);
 
-    private Function<Speed, String> function;
+    private Function<Essence, String> function;
 
-    ConverterServices(Function<Speed, String> function) {
+    ConverterServices(Function<Essence, String> function) {
         this.function = function;
     }
 
-    public Function<Speed, ?> getFunction() {
+    public Function<Essence, String> getFunction() {
         return function;
     }
 

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ServiceFactory {
 
-    public static Service getService(List<String> lines, Services section) {
+    /*public static Service getService(List<String> lines, Services section) {
         return section == Services.CONVERT ? getConverter(lines) : getDistanceCalculator(lines);
     }
 
@@ -29,7 +29,7 @@ public class ServiceFactory {
         }
 
         return new Converter(list);
-    }
+    }*/
 
     private static DistanceCalculator getDistanceCalculator(List<String> lines) {
         List<Speed> list = new ArrayList<>();

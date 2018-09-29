@@ -3,6 +3,7 @@ import services.Converter;
 import services.DistanceCalculator;
 import support.DataReader;
 import factories.ServiceFactory;
+import support.sections.ConverterServices;
 import support.sections.Services;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class Runner {
             System.out.println("Reading a file and creating a list of strings...");
             List<String> list = new DataReader(args[0]).fileAsList();
 
-            System.out.println("Creating a converter, which contains a speeds list and a time, received from the file, as fields...");
+           /* System.out.println("Creating a converter, which contains a speeds list and a time, received from the file, as fields...");
             Converter converter = (Converter) ServiceFactory.getService(list, Services.CONVERT);
 
             System.out.println("\ntask 2:");
@@ -47,7 +48,8 @@ public class Runner {
             System.out.println("\ntask 5:");
 
             System.out.println("Outputting of the sorted speeds list:");
-            converter.getSortedSpeedsList().forEach(System.out::println);
+            converter.getSortedSpeedsList().forEach(System.out::println);*/
+            System.out.println(new Converter(list).action(ConverterServices.TO_MS));
         } catch (IOException e) {
             e.printStackTrace();
         }
