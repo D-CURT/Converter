@@ -25,24 +25,8 @@ public class Result {
         groupIndex = NEGATIVE;
     }
 
-    public String getInput() {
-        return input;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
     public Double getDoubleValue() {
         return Double.parseDouble(value);
-    }
-
-    public String getError() {
-        return error;
     }
 
     public int getGroupIndex() {

@@ -16,11 +16,11 @@ import java.util.List;
 
 import static support.Formatter.format;
 
-public class DistanceCalculator implements Service {
+public class Calculator implements Service {
     private List<Speed> list;
     private Time time;
 
-    public DistanceCalculator(List<Speed> list, Time time) {
+    public Calculator(List<Speed> list, Time time) {
         this.list = list;
         this.time = time;
     }

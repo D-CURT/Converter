@@ -4,7 +4,7 @@ import beans.Essence;
 import beans.Speed;
 import beans.Time;
 import services.Converter;
-import services.DistanceCalculator;
+import services.Calculator;
 import services.interfaces.Service;
 import support.sections.Services;
 
@@ -31,7 +31,7 @@ public class ServiceFactory {
         return new Converter(list);
     }*/
 
-    private static DistanceCalculator getDistanceCalculator(List<String> lines) {
+    private static Calculator getDistanceCalculator(List<String> lines) {
         List<Speed> list = new ArrayList<>();
         boolean firstLine = true;
         Essence essence;
@@ -45,6 +45,6 @@ public class ServiceFactory {
             } else list.add((Speed) essence);
         }
 
-        return new DistanceCalculator(list, time);
+        return new Calculator(list, time);
     }
 }

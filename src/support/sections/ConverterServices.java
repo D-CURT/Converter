@@ -26,8 +26,4 @@ public enum ConverterServices {
                      .findFirst()
                      .orElse(null);
     }
-
-    public static boolean isConverterService(Enum<?> section) {
-        return getService(section) != null;
-    }
 }
