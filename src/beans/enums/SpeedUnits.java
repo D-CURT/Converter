@@ -21,7 +21,10 @@ public enum SpeedUnits {
     }
 
     public static SpeedUnits getUnit(String s) {
-        return Arrays.stream(values()).filter(speedUnits -> speedUnits.name.equals(s)).findFirst().orElse(null);
+        return Arrays.stream(values())
+                     .filter(speedUnits -> speedUnits.name.equals(s))
+                     .findFirst()
+                     .orElse(null);
     }
 
     public static double unitIn_ms(Speed speed) {
