@@ -1,27 +1,52 @@
 package beans;
 
-import exceptions.ConverterException;
-
+import static support.Constants.EMPTY;
 import static support.Constants.NEGATIVE;
+import static support.Constants.SPACE;
 
 public class Result {
     private String input;
-    private String result;
-    private ConverterException error;
-    private Double convertedValue;
+    private String unit;
+    private String value;
+    private String error;
     private int groupIndex;
 
-    public Result(String input, String result) {
+    public Result(String input, String value, String unit, int groupIndex) {
         this.input = input;
-        this.result = result;
-
+        this.value = value;
+        this.unit = unit;
+        this.groupIndex = groupIndex;
     }
 
-    public Result(String input, ConverterException error) {
+    public Result(String input, String error) {
         this.input = input;
         this.error = error;
-        convertedValue = (double) NEGATIVE;
+        value = EMPTY + NEGATIVE;
         groupIndex = NEGATIVE;
+    }
+
+    public String getInput() {
+        return input;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public Double getDoubleValue() {
+        return Double.parseDouble(value);
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public int getGroupIndex() {
+        return groupIndex;
     }
 
     private boolean hasError() {
@@ -30,6 +55,7 @@ public class Result {
 
     @Override
     public String toString() {
-        return hasError() ? input + " - " + error.getMessage() : result;
+        return hasError() ? input + " - " + error
+                          : input + " = " + value + SPACE + unit;
     }
 }

@@ -7,8 +7,8 @@ import beans.enums.SpeedUnits;
 import exceptions.ConverterException;
 import factories.EssenceFactory;
 import services.interfaces.Service;
-import support.comparators.SpeedComparator;
-import support.comparators.SpeedUnitComparator;
+import support.comparators.ResultComparator;
+import support.comparators.GroupComparator;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -18,50 +18,42 @@ import static support.sections.ConverterServices.getService;
 
 public class Converter implements Service {
     private List<String> strings;
-    private List<Speed> list;
-
-    /*public Converter(List<Speed> list) {
-        this.list = list;
-    }*/
 
     public Converter(List<String> strings) {
         this.strings = strings;
     }
 
-    public List<Speed> speedsAsList() {
-        return list;
-    }
-
-    public static String speedIn_ms(Essence essence) {
+    public static Result speedIn_ms(Essence essence) {
         if (essence instanceof Speed) {
-            return essence + " = " + format(SpeedUnits.unitIn_ms((Speed) essence)) + " ms";
+
+            Speed speed = (Speed) essence;
+            return new Result(speed.toString(), format(SpeedUnits.unitIn_ms(speed)),
+                    "ms", SpeedUnits.getUnit(speed.getUnit().getName()).ordinal());
         }
-        throw new ConverterException("Conversion failed.");
+        throw new ConverterException("Conversion failed!");
     }
 
-    public List<Speed> getSortedSpeedsList() {
+    private List<Result> getSortedResults(List<Result> list) {
          return list.stream()
-                    .sorted(new SpeedComparator())
-                    .sorted(new SpeedUnitComparator())
+                    .sorted(new ResultComparator())
+                    .sorted(new GroupComparator())
                     .collect(Collectors.toList());
     }
 
     @Override
     public List<Result> action(Enum<?> service) {
-        return strings.stream()
+        return getSortedResults(strings.stream()
                       .map(s -> convert(s, service))
-                      .collect(Collectors.toList());
+                      .collect(Collectors.toList()));
     }
 
     private Result convert(String s, Enum<?> service) {
         Essence essence;
-        String applied;
         try {
             essence = EssenceFactory.getEssence(s);
-            applied = getService(service).getFunction().apply(essence);
-            return new Result(s, applied);
+            return getService(service).getFunction().apply(essence);
         } catch (ConverterException e) {
-            return new Result(s, e);
+            return new Result(s, e.getMessage());
         }
     }
 }
