@@ -17,12 +17,12 @@ public class Result {
         this.error = error;
     }
 
-    public boolean hasError() {
+    private boolean hasError() {
         return error != null;
     }
 
     @Override
     public String toString() {
-        return (hasError() ? input + " - " + error.getMessage() : result);
+        return hasError() ? input + " - " + error.getMessage() : result;
     }
 }
