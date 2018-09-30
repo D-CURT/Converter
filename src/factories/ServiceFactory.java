@@ -14,7 +14,7 @@ import java.util.List;
 public class ServiceFactory {
 
     public static Service getService(List<String> lines, Services section) {
-        return section == Services.CONVERT ? new Converter(lines) : getDistanceCalculator(lines);
+        return section == Services.CONVERSION ? new Converter(lines) : getDistanceCalculator(lines);
     }
 
     /*private static Converter getConverter(List<String> lines) {

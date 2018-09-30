@@ -9,12 +9,12 @@ import factories.EssenceFactory;
 import services.interfaces.Service;
 import support.comparators.SpeedComparator;
 import support.comparators.SpeedUnitComparator;
-import support.sections.ConverterServices;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 import static support.Formatter.format;
+import static support.sections.ConverterServices.getService;
 
 public class Converter implements Service {
     private List<String> strings;
@@ -33,7 +33,10 @@ public class Converter implements Service {
     }
 
     public static String speedIn_ms(Essence essence) {
-        return essence + " = " + format(SpeedUnits.unitIn_ms(castToSpeed(essence))) + " ms";
+        if (essence instanceof Speed) {
+            return essence + " = " + format(SpeedUnits.unitIn_ms((Speed) essence)) + " ms";
+        }
+        throw new ConverterException("Conversion failed.");
     }
 
     public List<Speed> getSortedSpeedsList() {
@@ -55,18 +58,10 @@ public class Converter implements Service {
         String applied;
         try {
             essence = EssenceFactory.getEssence(s);
-            applied = ConverterServices.getService(service).getFunction().apply(essence);
+            applied = getService(service).getFunction().apply(essence);
             return new Result(s, applied);
         } catch (ConverterException e) {
             return new Result(s, e);
-        }
-    }
-
-    private static Speed castToSpeed(Essence essence) {
-        try {
-            return (Speed) essence;
-        } catch (ClassCastException e) {
-            throw new ConverterException("Conversion failed.");
         }
     }
 }
