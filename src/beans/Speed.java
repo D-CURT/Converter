@@ -14,6 +14,10 @@ public class Speed extends Essence{
         return Integer.parseInt(getValue());
     }
 
+    public Double getDoubleValue() {
+        return Double.parseDouble(getValue());
+    }
+
     public SpeedUnits getUnit() {
         return unit;
     }
