@@ -27,15 +27,6 @@ public enum SpeedUnits {
                      .orElse(null);
     }
 
-    public static double unitIn_ms(Speed speed) {
-        switch (speed.getUnit().name) {
-            case "kmh" : return speed.getIntValue() * 0.27777777777778;
-            case "mph" : return speed.getIntValue() * 0.44704;
-            case "kn" : return speed.getIntValue() * 0.51444444444;
-            default : return speed.getIntValue();
-        }
-    }
-
     public static boolean isSpeedUnit(String s) {
         return getUnit(s) != null;
     }

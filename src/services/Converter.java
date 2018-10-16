@@ -31,7 +31,7 @@ public class Converter implements Service {
             SpeedUnits unit = speed.getUnit();
             return new Result(speed.toString(),
                        format(SpeedConversion.conversion(unit).toMS.apply(speed)),
-                      "ms", SpeedUnits.getUnit(unit.name()).ordinal());
+                      "ms", SpeedUnits.getUnit(unit.getName()).ordinal());
         }
         throw new ConverterException("Conversion failed!");
     }
@@ -103,22 +103,6 @@ public class Converter implements Service {
 
         private boolean identified(SpeedUnits units) {
             return identifier == units;
-        }
-
-        public Function<Speed, Double> toKMH() {
-            return toKMH;
-        }
-
-        public Function<Speed, Double> toMPH() {
-            return toMPH;
-        }
-
-        public Function<Speed, Double> toKN() {
-            return toKN;
-        }
-
-        public Function<Speed, Double> toMS() {
-            return toMS;
         }
     }
 }
