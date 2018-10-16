@@ -1,6 +1,6 @@
 import support.DataReader;
 import factories.ServiceFactory;
-import support.sections.ConverterServices;
+import support.sections.SpeedConversion;
 import support.sections.Services;
 
 import java.io.IOException;
@@ -11,7 +11,7 @@ public class Runner {
         try {
             List<String> list = new DataReader(args[0]).fileAsList();
 
-            System.out.println(ServiceFactory.getService(list, Services.CONVERSION).action(ConverterServices.TO_MS));
+            System.out.println(ServiceFactory.getService(list, Services.CONVERSION).action(SpeedConversion.TO_MS));
         } catch (IOException e) {
             e.printStackTrace();
         }

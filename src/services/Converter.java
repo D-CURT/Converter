@@ -15,7 +15,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static support.Formatter.format;
-import static support.sections.ConverterServices.getService;
+import static support.sections.SpeedConversion.getService;
 
 public class Converter implements Service {
     private List<String> strings;
@@ -98,7 +98,7 @@ public class Converter implements Service {
             return Arrays.stream(values())
                          .filter(speedConversion -> speedConversion.identified(units))
                          .findFirst()
-                         .orElseThrow(() -> new ConverterException("Conversion unit is not agreed!"));
+                         .orElseThrow(() -> new ConverterException("The unit is not agreed!"));
         }
 
         private boolean identified(SpeedUnits units) {

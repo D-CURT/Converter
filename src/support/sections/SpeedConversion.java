@@ -7,12 +7,12 @@ import services.Converter;
 import java.util.Arrays;
 import java.util.function.Function;
 
-public enum ConverterServices {
+public enum SpeedConversion {
     TO_MS(Converter::speedIn_ms);
 
     private Function<Essence, Result> function;
 
-    ConverterServices(Function<Essence, Result> function) {
+    SpeedConversion(Function<Essence, Result> function) {
         this.function = function;
     }
 
@@ -20,9 +20,9 @@ public enum ConverterServices {
         return function;
     }
 
-    public static ConverterServices getService(Enum<?> section) {
+    public static SpeedConversion getService(Enum<?> section) {
         return Arrays.stream(values())
-                     .filter(converterServices -> converterServices == section)
+                     .filter(speedConversion -> speedConversion == section)
                      .findFirst()
                      .orElse(null);
     }

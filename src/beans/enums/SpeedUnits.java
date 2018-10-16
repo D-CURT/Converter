@@ -1,7 +1,5 @@
 package beans.enums;
 
-import beans.Speed;
-
 import java.util.Arrays;
 
 public enum SpeedUnits {
