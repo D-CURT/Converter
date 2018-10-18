@@ -67,11 +67,11 @@ public class Converter implements Service {
             speed -> speed.getDoubleValue() * 3600 / 1000),
         MPH(SpeedUnits.MPH,
             speed -> speed.getDoubleValue() * 1.609, Speed::getDoubleValue,
-            speed -> speed.getDoubleValue() * 1.1507794480136,
+            speed -> speed.getDoubleValue() * 1.151,
             speed -> speed.getDoubleValue() * 3600 / 1609),
         KN(SpeedUnits.KH,
             speed -> speed.getDoubleValue() * 1.852,
-            speed -> speed.getDoubleValue() / 1.1507794480136,
+            speed -> speed.getDoubleValue() / 1.151,
             Speed::getDoubleValue, speed -> speed.getDoubleValue() * 3600 / 1852),
         MS(SpeedUnits.MS,
             speed -> speed.getDoubleValue() / 3600 * 1000,
@@ -101,8 +101,8 @@ public class Converter implements Service {
                          .orElseThrow(() -> new ConverterException("The unit is not agreed!"));
         }
 
-        private boolean identified(SpeedUnits units) {
-            return identifier == units;
+        private boolean identified(SpeedUnits unit) {
+            return identifier == unit;
         }
     }
 }
