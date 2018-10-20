@@ -19,6 +19,9 @@ import static support.Formatter.format;
 public class Converter implements Service {
     private List<String> strings;
 
+    public Converter() {
+    }
+
     public Converter(List<String> strings) {
         this.strings = strings;
     }
