@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.function.Function;
 
 public enum SpeedConversion {
-    TO_MS(Converter::speedIn_ms);
+    TO_MS(Converter::speedTo_ms);
 
     private Function<Essence, Result> function;
 

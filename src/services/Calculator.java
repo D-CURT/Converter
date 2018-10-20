@@ -24,7 +24,7 @@ public class Calculator implements Service {
     }
 
     private Distance getDistanceIn_m(Speed speed) {
-        double value = Converter.speedIn_ms(speed).getDoubleValue() * TimeUnits.unitIn_s(time);
+        double value = Converter.speedTo_ms(speed).getDoubleValue() * TimeUnits.unitIn_s(time);
         return (Distance) EssenceFactory.getEssence(format(value) + " m");
     }
 

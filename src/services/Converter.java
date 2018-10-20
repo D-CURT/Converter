@@ -24,13 +24,13 @@ public class Converter implements Service {
         this.strings = strings;
     }
 
-    public static Result speedIn_ms(Essence essence) {
+    public static Result speedTo_ms(Essence essence) {
         if (essence instanceof Speed) {
 
             Speed speed = (Speed) essence;
             SpeedUnits unit = speed.getUnit();
             return new Result(speed.toString(),
-                       format(SpeedConversion.conversion(unit).toMS.apply(speed)),
+                       format(SpeedConversion.toMS(speed)),
                       "ms", SpeedUnits.getUnit(unit.getName()).ordinal());
         }
         throw new ConverterException("Conversion failed!");
@@ -50,11 +50,29 @@ public class Converter implements Service {
                       .collect(Collectors.toList()));
     }
 
-    private Result convert(String s, Enum<?> service) {
+    /*private Result convert(String s, Enum<?> service) {
         Essence essence;
         try {
             essence = EssenceFactory.getEssence(s);
             return getService(service).getFunction().apply(essence);
+        } catch (ConverterException e) {
+            return new Result(s, e.getMessage());
+        }
+    }*/
+
+    private Result convert(String s, Enum<?> service) {
+        Essence essence;
+        boolean speeds = service.getClass() == SpeedConversion.class;
+        try {
+            essence = EssenceFactory.getEssence(s);
+            switch (service.ordinal()) {
+                case 0: return speeds ? null : null;
+                case 1: return speeds ? null : null;
+                case 2: return speeds ? null : null;
+                case 3: return speeds ? speedTo_ms(essence) : null;
+                default: throw new ConverterException("Operation is not agreed!");
+            }
+
         } catch (ConverterException e) {
             return new Result(s, e.getMessage());
         }
@@ -103,6 +121,10 @@ public class Converter implements Service {
 
         private boolean identified(SpeedUnits unit) {
             return identifier == unit;
+        }
+
+        public static Double toMS(Speed speed) {
+            return conversion(speed.getUnit()).toMS.apply(speed);
         }
     }
 }

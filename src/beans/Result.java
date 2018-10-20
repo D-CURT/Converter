@@ -11,6 +11,9 @@ public class Result {
     private String error;
     private int groupIndex;
 
+    public Result() {
+    }
+
     public Result(String input, String value, String unit, int groupIndex) {
         this.input = input;
         this.value = value;
