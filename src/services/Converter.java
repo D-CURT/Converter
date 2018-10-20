@@ -23,13 +23,49 @@ public class Converter implements Service {
         this.strings = strings;
     }
 
-    public static Result speedTo_ms(Essence essence) {
+    private Result speedTo_kmh(Essence essence) {
         if (essence instanceof Speed) {
 
             Speed speed = (Speed) essence;
             SpeedUnits unit = speed.getUnit();
             return new Result(speed.toString(),
-                       format(SpeedConversion.toMS(speed)),
+                    format(SpeedUnitConversion.toKMH(speed)),
+                    "kmh", SpeedUnits.getUnit(unit.getName()).ordinal());
+        }
+        throw new ConverterException("Conversion failed!");
+    }
+
+    private Result speedTo_mph(Essence essence) {
+        if (essence instanceof Speed) {
+
+            Speed speed = (Speed) essence;
+            SpeedUnits unit = speed.getUnit();
+            return new Result(speed.toString(),
+                    format(SpeedUnitConversion.toMPH(speed)),
+                    "mph", SpeedUnits.getUnit(unit.getName()).ordinal());
+        }
+        throw new ConverterException("Conversion failed!");
+    }
+
+    private Result speedTo_kn(Essence essence) {
+        if (essence instanceof Speed) {
+
+            Speed speed = (Speed) essence;
+            SpeedUnits unit = speed.getUnit();
+            return new Result(speed.toString(),
+                    format(SpeedUnitConversion.toKN(speed)),
+                    "kn", SpeedUnits.getUnit(unit.getName()).ordinal());
+        }
+        throw new ConverterException("Conversion failed!");
+    }
+
+    private Result speedTo_ms(Essence essence) {
+        if (essence instanceof Speed) {
+
+            Speed speed = (Speed) essence;
+            SpeedUnits unit = speed.getUnit();
+            return new Result(speed.toString(),
+                       format(SpeedUnitConversion.toMS(speed)),
                       "ms", SpeedUnits.getUnit(unit.getName()).ordinal());
         }
         throw new ConverterException("Conversion failed!");
@@ -51,13 +87,13 @@ public class Converter implements Service {
 
     private Result convert(String s, Enum<?> service) {
         Essence essence;
-        boolean speeds = service.getClass() == SpeedConversion.class;
+        boolean speeds = service.getClass() == SpeedUnitConversion.class;
         try {
             essence = EssenceFactory.getEssence(s);
             switch (service.ordinal()) {
-                case 0: return speeds ? speedTo_ms(essence) : speedTo_ms(essence);
-                case 1: return speeds ? speedTo_ms(essence) : speedTo_ms(essence);
-                case 2: return speeds ? speedTo_ms(essence) : speedTo_ms(essence);
+                case 0: return speeds ? speedTo_kmh(essence) : speedTo_ms(essence);
+                case 1: return speeds ? speedTo_mph(essence) : speedTo_ms(essence);
+                case 2: return speeds ? speedTo_kn(essence) : speedTo_ms(essence);
                 case 3: return speeds ? speedTo_ms(essence) : speedTo_ms(essence);
                 default: throw new ConverterException("Operation is not agreed!");
             }
@@ -67,7 +103,7 @@ public class Converter implements Service {
         }
     }
 
-    private enum SpeedConversion {
+    public enum SpeedUnitConversion {
         KMH(SpeedUnits.KMH,
             Speed::getDoubleValue, speed -> speed.getDoubleValue() / 1.609,
             speed -> speed.getDoubleValue() / 1.852,
@@ -91,9 +127,9 @@ public class Converter implements Service {
         private final Function<Speed, Double> toKN;
         private final Function<Speed, Double> toMS;
 
-        SpeedConversion(SpeedUnits identifier,
-                        Function<Speed, Double> toKMH, Function<Speed, Double> toMPH,
-                        Function<Speed, Double> toKN, Function<Speed, Double> toMS) {
+        SpeedUnitConversion(SpeedUnits identifier,
+                            Function<Speed, Double> toKMH, Function<Speed, Double> toMPH,
+                            Function<Speed, Double> toKN, Function<Speed, Double> toMS) {
             this.identifier = identifier;
             this.toKMH = toKMH;
             this.toMPH = toMPH;
@@ -101,7 +137,7 @@ public class Converter implements Service {
             this.toMS = toMS;
         }
 
-        public static SpeedConversion conversion(SpeedUnits units) {
+        private static SpeedUnitConversion conversion(SpeedUnits units) {
             return Arrays.stream(values())
                          .filter(speedConversion -> speedConversion.identified(units))
                          .findFirst()
@@ -110,6 +146,18 @@ public class Converter implements Service {
 
         private boolean identified(SpeedUnits unit) {
             return identifier == unit;
+        }
+
+        public static Double toKMH(Speed speed) {
+            return conversion(speed.getUnit()).toKMH.apply(speed);
+        }
+
+        public static Double toMPH(Speed speed) {
+            return conversion(speed.getUnit()).toMPH.apply(speed);
+        }
+
+        public static Double toKN(Speed speed) {
+            return conversion(speed.getUnit()).toKN.apply(speed);
         }
 
         public static Double toMS(Speed speed) {
