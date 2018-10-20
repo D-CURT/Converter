@@ -15,7 +15,6 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static support.Formatter.format;
-import static support.sections.SpeedConversion.getService;
 
 public class Converter implements Service {
     private List<String> strings;
@@ -50,26 +49,16 @@ public class Converter implements Service {
                       .collect(Collectors.toList()));
     }
 
-    /*private Result convert(String s, Enum<?> service) {
-        Essence essence;
-        try {
-            essence = EssenceFactory.getEssence(s);
-            return getService(service).getFunction().apply(essence);
-        } catch (ConverterException e) {
-            return new Result(s, e.getMessage());
-        }
-    }*/
-
     private Result convert(String s, Enum<?> service) {
         Essence essence;
         boolean speeds = service.getClass() == SpeedConversion.class;
         try {
             essence = EssenceFactory.getEssence(s);
             switch (service.ordinal()) {
-                case 0: return speeds ? null : null;
-                case 1: return speeds ? null : null;
-                case 2: return speeds ? null : null;
-                case 3: return speeds ? speedTo_ms(essence) : null;
+                case 0: return speeds ? speedTo_ms(essence) : speedTo_ms(essence);
+                case 1: return speeds ? speedTo_ms(essence) : speedTo_ms(essence);
+                case 2: return speeds ? speedTo_ms(essence) : speedTo_ms(essence);
+                case 3: return speeds ? speedTo_ms(essence) : speedTo_ms(essence);
                 default: throw new ConverterException("Operation is not agreed!");
             }
 
