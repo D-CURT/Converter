@@ -7,9 +7,11 @@ import beans.enums.SpeedUnits;
 import exceptions.ConverterException;
 import factories.EssenceFactory;
 import services.interfaces.Service;
+import support.DataReader;
 import support.comparators.ResultComparator;
 import support.comparators.GroupComparator;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -82,7 +84,7 @@ public class Converter implements Service {
     }
 
     @Override
-    public List<Result> action(Enum<?> service) {
+    public List<Result> action(Enum<?> service) throws IOException {
         return getSortedResults(strings.stream()
                       .map(s -> convert(s, service))
                       .collect(Collectors.toList()));
