@@ -26,7 +26,6 @@
           <c:forEach var="result" items="${results}">
               <c:out value="${result}"/>
           </c:forEach>
-         <%-- <input type="text" name="outputValue" value="${results}">--%>
       </form>
       <input type="hidden" name="results" value="">
   </body>
