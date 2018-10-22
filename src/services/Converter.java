@@ -91,7 +91,7 @@ public class Converter implements Service {
 
     private Result convert(String s, Enum<?> service) {
         Essence essence;
-        boolean speeds = service.getClass() == SpeedUnitConversion.class;
+        boolean speeds = service.getClass() == SpeedUnits.class;
         try {
             essence = EssenceFactory.getEssence(s);
             switch (service.ordinal()) {
