@@ -3,6 +3,7 @@ package services;
 import domain.Essence;
 import dto.Result;
 import domain.Speed;
+import utils.Constants;
 import utils.unit_indentifires.SpeedUnits;
 import utils.exceptions.ConverterException;
 import domain.factory.EssenceFactory;
@@ -10,8 +11,8 @@ import services.interfaces.Service;
 import utils.comparators.ResultComparator;
 import utils.comparators.GroupComparator;
 
-import java.io.IOException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -34,7 +35,7 @@ public class Converter implements Service {
             SpeedUnits unit = speed.getUnit();
             return new Result(speed.toString(),
                     format(SpeedUnitConversion.toKMH(speed)),
-                    "kmh", SpeedUnits.getUnit(unit.getName()).ordinal());
+                    Constants.KMH, SpeedUnits.getUnit(unit.getName()).ordinal());
         }
         throw new ConverterException("Conversion failed!");
     }
@@ -46,7 +47,7 @@ public class Converter implements Service {
             SpeedUnits unit = speed.getUnit();
             return new Result(speed.toString(),
                     format(SpeedUnitConversion.toMPH(speed)),
-                    "mph", SpeedUnits.getUnit(unit.getName()).ordinal());
+                    Constants.MPH, SpeedUnits.getUnit(unit.getName()).ordinal());
         }
         throw new ConverterException("Conversion failed!");
     }
@@ -58,7 +59,7 @@ public class Converter implements Service {
             SpeedUnits unit = speed.getUnit();
             return new Result(speed.toString(),
                     format(SpeedUnitConversion.toKN(speed)),
-                    "kn", SpeedUnits.getUnit(unit.getName()).ordinal());
+                    Constants.KN, SpeedUnits.getUnit(unit.getName()).ordinal());
         }
         throw new ConverterException("Conversion failed!");
     }
@@ -70,7 +71,7 @@ public class Converter implements Service {
             SpeedUnits unit = speed.getUnit();
             return new Result(speed.toString(),
                        format(SpeedUnitConversion.toMS(speed)),
-                      "ms", SpeedUnits.getUnit(unit.getName()).ordinal());
+                       Constants.MS, SpeedUnits.getUnit(unit.getName()).ordinal());
         }
         throw new ConverterException("Conversion failed!");
     }
@@ -83,7 +84,7 @@ public class Converter implements Service {
     }
 
     @Override
-    public List<Result> action(Enum<?> service) throws IOException {
+    public List<Result> action(Enum<?> service) {
         return getSortedResults(strings.stream()
                       .map(s -> convert(s, service))
                       .collect(Collectors.toList()));
@@ -111,19 +112,19 @@ public class Converter implements Service {
         KMH(SpeedUnits.KMH,
             Speed::getDoubleValue, speed -> speed.getDoubleValue() / 1.609,
             speed -> speed.getDoubleValue() / 1.852,
-            speed -> speed.getDoubleValue() * 3600 / 1000),
+            speed -> speed.getDoubleValue() * 1000 / 3600),
         MPH(SpeedUnits.MPH,
             speed -> speed.getDoubleValue() * 1.609, Speed::getDoubleValue,
-            speed -> speed.getDoubleValue() * 1.151,
-            speed -> speed.getDoubleValue() * 3600 / 1609),
+            speed -> speed.getDoubleValue() * 0.869,
+            speed -> speed.getDoubleValue() * 1609 / 3600),
         KN(SpeedUnits.KH,
             speed -> speed.getDoubleValue() * 1.852,
-            speed -> speed.getDoubleValue() / 1.151,
-            Speed::getDoubleValue, speed -> speed.getDoubleValue() * 3600 / 1852),
+            speed -> speed.getDoubleValue() / 0.869,
+            Speed::getDoubleValue, speed -> speed.getDoubleValue() * 1852 / 3600),
         MS(SpeedUnits.MS,
-            speed -> speed.getDoubleValue() / 3600 * 1000,
-            speed -> speed.getDoubleValue() / 3600 * 1609,
-            speed -> speed.getDoubleValue() / 3600 * 1852, Speed::getDoubleValue);
+            speed -> speed.getDoubleValue() * 3600 / 1000,
+            speed -> speed.getDoubleValue() * 3600 / 1609,
+            speed -> speed.getDoubleValue() * 3600 / 1852, Speed::getDoubleValue);
 
         private final SpeedUnits identifier;
         private final Function<Speed, Double> toKMH;
