@@ -1,16 +1,16 @@
-package factories;
+package domain.factory;
 
-import beans.Distance;
-import beans.Essence;
-import beans.Speed;
-import beans.Time;
-import exceptions.ConverterException;
+import domain.Distance;
+import domain.Essence;
+import domain.Speed;
+import domain.Time;
+import utils.exceptions.ConverterException;
 
-import static beans.enums.DistanceUnits.isDistanceUnit;
-import static beans.enums.SpeedUnits.isSpeedUnit;
-import static beans.enums.TimeUnits.isTimeUnit;
-import static support.Constants.EMPTY;
-import static support.Constants.SPACE;
+import static utils.unit_indentifires.DistanceUnits.isDistanceUnit;
+import static utils.unit_indentifires.SpeedUnits.isSpeedUnit;
+import static utils.unit_indentifires.TimeUnits.isTimeUnit;
+import static utils.Constants.EMPTY;
+import static utils.Constants.SPACE;
 
 public class EssenceFactory {
     public static Essence getEssence(String s) {

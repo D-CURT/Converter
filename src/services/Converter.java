@@ -1,22 +1,21 @@
 package services;
 
-import beans.Essence;
-import beans.Result;
-import beans.Speed;
-import beans.enums.SpeedUnits;
-import exceptions.ConverterException;
-import factories.EssenceFactory;
+import domain.Essence;
+import dto.Result;
+import domain.Speed;
+import utils.unit_indentifires.SpeedUnits;
+import utils.exceptions.ConverterException;
+import domain.factory.EssenceFactory;
 import services.interfaces.Service;
-import support.DataReader;
-import support.comparators.ResultComparator;
-import support.comparators.GroupComparator;
+import utils.comparators.ResultComparator;
+import utils.comparators.GroupComparator;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static support.Formatter.format;
+import static utils.Formatter.format;
 
 public class Converter implements Service {
     private List<String> strings;

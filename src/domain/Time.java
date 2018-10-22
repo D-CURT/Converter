@@ -1,6 +1,6 @@
-package beans;
+package domain;
 
-import beans.enums.TimeUnits;
+import utils.unit_indentifires.TimeUnits;
 
 public class Time extends Essence{
     private TimeUnits unit;

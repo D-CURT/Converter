@@ -1,6 +1,6 @@
-package beans;
+package domain;
 
-import beans.enums.SpeedUnits;
+import utils.unit_indentifires.SpeedUnits;
 
 public class Speed extends Essence{
     private SpeedUnits unit;

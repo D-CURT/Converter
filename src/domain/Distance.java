@@ -1,4 +1,4 @@
-package beans;
+package domain;
 
 public class Distance extends Essence implements Comparable<Distance>{
     private String unit;

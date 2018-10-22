@@ -1,6 +1,6 @@
-package support.comparators;
+package utils.comparators;
 
-import beans.Result;
+import dto.Result;
 import java.util.Collections;
 import java.util.Comparator;
 

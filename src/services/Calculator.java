@@ -1,18 +1,18 @@
 package services;
 
-import beans.Distance;
-import beans.Result;
-import beans.Speed;
-import beans.Time;
-import beans.enums.TimeUnits;
-import factories.EssenceFactory;
+import domain.Distance;
+import dto.Result;
+import domain.Speed;
+import domain.Time;
+import utils.unit_indentifires.TimeUnits;
+import domain.factory.EssenceFactory;
 import services.interfaces.Service;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static support.Formatter.format;
+import static utils.Formatter.format;
 
 public class Calculator implements Service {
     private List<Speed> list;

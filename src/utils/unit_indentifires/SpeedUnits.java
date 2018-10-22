@@ -1,12 +1,14 @@
-package beans.enums;
+package utils.unit_indentifires;
+
+import utils.Constants;
 
 import java.util.Arrays;
 
 public enum SpeedUnits {
-    KMH("kmh"),
-    MPH("mph"),
-    KH("kn"),
-    MS("ms");
+    KMH(Constants.KMH),
+    MPH(Constants.MPH),
+    KH(Constants.KN),
+    MS(Constants.MS);
 
     private final String name;
 

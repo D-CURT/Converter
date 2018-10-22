@@ -1,6 +1,6 @@
-package support.comparators;
+package utils.comparators;
 
-import beans.Result;
+import dto.Result;
 import java.util.Comparator;
 
 public class GroupComparator implements Comparator<Result> {

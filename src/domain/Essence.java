@@ -1,13 +1,13 @@
-package beans;
+package domain;
 
 public abstract class Essence {
     private String value;
 
-    public Essence(String value) {
+    Essence(String value) {
         this.value = value;
     }
 
-    public String getValue() {
+    String getValue() {
         return value;
     }
 }

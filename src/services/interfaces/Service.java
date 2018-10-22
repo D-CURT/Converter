@@ -1,6 +1,6 @@
 package services.interfaces;
 
-import beans.Result;
+import dto.Result;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,6 +1,6 @@
-package beans.enums;
+package utils.unit_indentifires;
 
-import beans.Time;
+import domain.Time;
 
 import java.util.Arrays;
 

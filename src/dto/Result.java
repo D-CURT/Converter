@@ -1,8 +1,8 @@
-package beans;
+package dto;
 
-import static support.Constants.EMPTY;
-import static support.Constants.NEGATIVE;
-import static support.Constants.SPACE;
+import static utils.Constants.EMPTY;
+import static utils.Constants.NEGATIVE;
+import static utils.Constants.SPACE;
 
 public class Result {
     private String input;

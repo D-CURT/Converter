@@ -1,12 +1,13 @@
-package factories;
+package services.factory;
 
-import beans.Essence;
-import beans.Speed;
-import beans.Time;
+import domain.Essence;
+import domain.factory.EssenceFactory;
+import domain.Speed;
+import domain.Time;
 import services.Converter;
 import services.Calculator;
 import services.interfaces.Service;
-import support.sections.Services;
+import utils.sections.Services;
 
 import java.util.ArrayList;
 import java.util.List;

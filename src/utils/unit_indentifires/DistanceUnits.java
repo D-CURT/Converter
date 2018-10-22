@@ -1,4 +1,4 @@
-package beans.enums;
+package utils.unit_indentifires;
 
 import java.util.Arrays;
 
