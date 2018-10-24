@@ -19,7 +19,7 @@ public class UserStorage {
         return instance == null ? instance = new UserStorage(new ArrayList<>()) : instance;
     }
 
-    public void add(User user) {
-        users.add(user);
+    public boolean add(User user) {
+        return users.add(user);
     }
 }
