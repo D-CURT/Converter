@@ -1,4 +1,4 @@
-package domain;
+package domain.service_beans;
 
 public abstract class Essence {
     private String value;

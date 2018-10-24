@@ -1,9 +1,9 @@
 package services.factory;
 
-import domain.Essence;
-import domain.factory.EssenceFactory;
-import domain.Speed;
-import domain.Time;
+import domain.service_beans.Essence;
+import domain.service_beans.factory.EssenceFactory;
+import domain.service_beans.Speed;
+import domain.service_beans.Time;
 import services.Converter;
 import services.Calculator;
 import services.interfaces.Service;
