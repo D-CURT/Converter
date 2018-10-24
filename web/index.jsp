@@ -8,10 +8,12 @@
       <script type="text/javascript" src="content/JS/Scripts.js"></script>
   </head>
   <body>
-        <c:if test="${error != null}">
-            <p style="color: red">${error}</p>
-        </c:if>
-        <form action="converter" name="inputForm" method="get">
+  <%@include file="jsp/header.jsp"%>
+  <hr>
+      <c:if test="${error != null}">
+          <p style="color: red">${error}</p>
+      </c:if>
+      <form action="converter" name="inputForm" method="get">
           <input id="serv" type="hidden" name="service" value="${service}">
           <input type="hidden" name="results" value="">
           <input type="text" name="inputValue" value="${inputValue}" title="input">
