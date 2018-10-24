@@ -1,7 +1,8 @@
 package controllers;
 
+import dao.UserStorage;
+import domain.dao_models.User;
 import utils.Constants;
-import utils.exceptions.ConverterException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,7 @@ public class LoginController extends AbstractController {
         String password = req.getParameter("password");
         try {
             if (validate(login, password)) {
-
+                UserStorage.getInstance().add(new User());
             }
             throw new Exception();
         } catch (Exception e) {
