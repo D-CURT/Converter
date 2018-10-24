@@ -1,6 +1,6 @@
 package utils.comparators;
 
-import dto.Result;
+import domain.dto_models.Result;
 import java.util.Collections;
 import java.util.Comparator;
 

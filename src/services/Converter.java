@@ -1,12 +1,12 @@
 package services;
 
-import domain.service_beans.Essence;
-import dto.Result;
-import domain.service_beans.Speed;
+import domain.service_models.Essence;
+import domain.dto_models.Result;
+import domain.service_models.Speed;
 import utils.Constants;
 import utils.unit_indentifires.SpeedUnits;
 import utils.exceptions.ConverterException;
-import domain.service_beans.factory.EssenceFactory;
+import domain.service_models.factory.EssenceFactory;
 import services.interfaces.Service;
 import utils.comparators.ResultComparator;
 import utils.comparators.GroupComparator;

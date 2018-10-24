@@ -1,4 +1,4 @@
-package dto;
+package domain.dto_models;
 
 import static utils.Constants.EMPTY;
 import static utils.Constants.NEGATIVE;

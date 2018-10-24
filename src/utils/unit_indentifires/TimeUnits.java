@@ -1,6 +1,6 @@
 package utils.unit_indentifires;
 
-import domain.service_beans.Time;
+import domain.service_models.Time;
 
 import java.util.Arrays;
 

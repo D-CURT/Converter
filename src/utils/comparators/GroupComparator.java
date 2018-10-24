@@ -1,6 +1,6 @@
 package utils.comparators;
 
-import dto.Result;
+import domain.dto_models.Result;
 import java.util.Comparator;
 
 public class GroupComparator implements Comparator<Result> {

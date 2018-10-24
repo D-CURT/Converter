@@ -1,4 +1,4 @@
-package domain.service_beans;
+package domain.service_models;
 
 import utils.unit_indentifires.TimeUnits;
 

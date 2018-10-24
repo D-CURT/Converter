@@ -1,9 +1,9 @@
-package domain.service_beans.factory;
+package domain.service_models.factory;
 
-import domain.service_beans.Distance;
-import domain.service_beans.Essence;
-import domain.service_beans.Speed;
-import domain.service_beans.Time;
+import domain.service_models.Distance;
+import domain.service_models.Essence;
+import domain.service_models.Speed;
+import domain.service_models.Time;
 import utils.exceptions.ConverterException;
 
 import static utils.unit_indentifires.DistanceUnits.isDistanceUnit;

@@ -1,11 +1,11 @@
 package services;
 
-import domain.service_beans.Distance;
-import dto.Result;
-import domain.service_beans.Speed;
-import domain.service_beans.Time;
+import domain.service_models.Distance;
+import domain.dto_models.Result;
+import domain.service_models.Speed;
+import domain.service_models.Time;
 import utils.unit_indentifires.TimeUnits;
-import domain.service_beans.factory.EssenceFactory;
+import domain.service_models.factory.EssenceFactory;
 import services.interfaces.Service;
 
 import java.util.Arrays;

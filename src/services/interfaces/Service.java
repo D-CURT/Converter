@@ -1,6 +1,6 @@
 package services.interfaces;
 
-import dto.Result;
+import domain.dto_models.Result;
 
 import java.io.IOException;
 import java.util.List;
