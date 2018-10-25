@@ -18,7 +18,12 @@ public class LoginController extends AbstractController {
         String password = req.getParameter("password");
         try {
             if (validate(login, password)) {
-                UserStorage.getInstance().add(new User());
+                User user = new User(login, password);
+                if (UserStorage.getInstance().check(user)) {
+                    req.setAttribute("user", user);
+                    forward(Constants.INDEX_URL, req, resp);
+                }
+                forwardError(Constants.LOGIN_URL, "User with such login and password is not exist", req, resp);
             }
             throw new Exception();
         } catch (Exception e) {

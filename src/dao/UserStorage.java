@@ -22,4 +22,8 @@ public class UserStorage {
     public boolean add(User user) {
         return users.add(user);
     }
+
+    public boolean check(User user) {
+        return users.contains(user);
+    }
 }
