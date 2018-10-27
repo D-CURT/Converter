@@ -5,12 +5,14 @@ import domain.dao_models.User;
 import utils.Constants;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static utils.Constants.EMPTY;
 
+@WebServlet("/jsp/login")
 public class LoginController extends AbstractController {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,6 +31,7 @@ public class LoginController extends AbstractController {
         } catch (Exception e) {
             forwardError(Constants.LOGIN_URL, "Incorrect login or password", req, resp);
         }
+
     }
 
     private boolean validate(String login, String password) {

@@ -13,12 +13,12 @@
                         <c:out value="USER: guest"/>
                     </c:when>
                     <c:otherwise>
-                        <c:out value="USER: ${user.name}"/>
+                        <c:out value="USER: ${user.login}"/>
                     </c:otherwise>
                 </c:choose>
             </th>
-            <td><a style="padding-left: 100px" href="jsp/login.jsp">Login</a></td>
-            <td><a href="jsp/registration.jsp">Registration</a></td>
+            <td><a style="padding-left: 100px" href="/jsp/login.jsp">Login</a></td>
+            <td><a href="registration.jsp">Registration</a></td>
             <td><a href="logout" <c:if test="${user.login == null}">hidden</c:if>>logout</a></td>
         </tr>
     </table>
