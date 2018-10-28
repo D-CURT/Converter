@@ -20,10 +20,9 @@ public class RegistrationController extends AbstractController {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         try {
-            User user = UserFactory.create(login, password);
+            User user = UserFactory.create(name, login, password);
             UserStorage base = UserStorage.getInstance();
             if (!base.check(user)) {
-                user.setName(name);
                 base.add(user);
                 forward(Constants.INDEX_URL, req, resp);
             }

@@ -1,9 +1,8 @@
 package dao;
 
 import domain.dao_models.User;
-import utils.Constants;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserStorage {
@@ -14,17 +13,14 @@ public class UserStorage {
 
     private UserStorage(List<User> users) {
         this.users = users;
+        add(new User("user", "123"));
     }
 
     public static synchronized UserStorage getInstance() {
-        return instance == null ? instance = new UserStorage(Collections.singletonList(new User("user", "123"))) : instance;
+        return instance == null ? instance = new UserStorage(new ArrayList<>()) : instance;
     }
 
     public boolean add(User user) {
-        System.out.println(users);
-        String name = user.getName();
-        if (name == null || name.equals(Constants.EMPTY))
-            return false;
         return users.add(user);
     }
 
