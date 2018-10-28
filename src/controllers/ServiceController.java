@@ -16,7 +16,7 @@ import static java.util.Collections.singletonList;
 import static utils.Constants.SPACE;
 
 @WebServlet("/converter")
-public class ConverterController extends AbstractController {
+public class ServiceController extends AbstractController {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String value = req.getParameter("inputValue");

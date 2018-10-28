@@ -8,7 +8,6 @@
           <element id="module-output" name="EPAM_Converter" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="standard-1.1.2" />
           <element id="library" level="project" name="jstl-1.2" />
         </element>
       </element>

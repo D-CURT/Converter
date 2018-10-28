@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AbstractController extends HttpServlet {
+public abstract class AbstractController extends HttpServlet {
     final void forward(String url, HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         getServletContext().getRequestDispatcher(url).forward(request, response);

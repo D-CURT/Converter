@@ -1,6 +1,7 @@
 package dao;
 
 import domain.dao_models.User;
+import utils.Constants;
 
 import java.util.Collections;
 import java.util.List;
@@ -20,6 +21,9 @@ public class UserStorage {
     }
 
     public boolean add(User user) {
+        String name = user.getName();
+        if (name == null || name.equals(Constants.EMPTY))
+            return false;
         return users.add(user);
     }
 

@@ -13,6 +13,14 @@ public class User {
         this.password = password;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getLogin() {
         return login;
     }
@@ -28,18 +36,5 @@ public class User {
         User user = (User) o;
         return Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(login, password);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
     }
 }
