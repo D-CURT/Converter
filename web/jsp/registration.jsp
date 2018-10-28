@@ -5,7 +5,7 @@
     <script type="text/javascript" src="content/JS/Scripts.js"></script>
 </head>
 <body>
-<c:if test="${error != null}">
+<c:if test="${not empty error}">
     <p style="color: red">${error}</p>
 </c:if>
     <form action="registration" name="registrationForm" method="get">
