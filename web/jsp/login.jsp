@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Login</title>
-    <script type="text/javascript" src="../content/JS/Scripts.js"></script>
+    <script type="text/javascript" src="/content/JS/Scripts.js"></script>
 </head>
 <body>
 <c:if test="${error != null}">
@@ -12,7 +12,7 @@
 <form action="login" name="loginForm" method="get">
     <input type="text" name="login" value="" placeholder="login">
     <input type="password" name="password" value="" placeholder="password">
-    <input type="submit" value="log in">
+    <input type="button" value="log in" onclick="submit()">
 </form>
 </body>
 </html>
