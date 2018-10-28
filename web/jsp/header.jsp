@@ -17,8 +17,8 @@
                     </c:otherwise>
                 </c:choose>
             </th>
-            <td><a style="padding-left: 100px" href="/jsp/login.jsp">Login</a></td>
-            <td><a href="registration.jsp">Registration</a></td>
+            <td><a style="padding-left: 100px" href="<%=Constants.LOGIN_URL%>" <c:if test="${user.login != null}">hidden</c:if>>Login</a></td>
+            <td><a href="<%=Constants.REGISTRATION_URL%>" <c:if test="${user.login != null}">hidden</c:if>>Registration</a></td>
             <td><a href="logout" <c:if test="${user.login == null}">hidden</c:if>>logout</a></td>
         </tr>
     </table>

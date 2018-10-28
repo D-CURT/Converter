@@ -13,6 +13,7 @@ public class Constants {
     public static final String ERROR = "error";
     public static final String INDEX_URL = "/index.jsp";
     public static final String LOGIN_URL = "/jsp/login.jsp";
+    public static final String REGISTRATION_URL = "/jsp/registration.jsp";
 
     // =========   SPEED UNITS   =========
 

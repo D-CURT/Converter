@@ -2,7 +2,6 @@ package dao;
 
 import domain.dao_models.User;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
