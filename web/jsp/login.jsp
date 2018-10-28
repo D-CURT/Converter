@@ -12,7 +12,7 @@
 <form action="login" name="loginForm" method="get">
     <input type="text" name="login" value="" placeholder="login">
     <input type="password" name="password" value="" placeholder="password">
-    <input type="button" value="log in" onclick="submit()">
+    <input type="button" value="log in" onclick="submit('loginForm')">
 </form>
 </body>
 </html>

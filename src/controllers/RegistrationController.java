@@ -7,10 +7,12 @@ import utils.Constants;
 import utils.exceptions.ConverterException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@WebServlet("/jsp/registration")
 public class RegistrationController extends AbstractController {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,6 +25,7 @@ public class RegistrationController extends AbstractController {
             if (!base.check(user)) {
                 user.setName(name);
                 base.add(user);
+                forward(Constants.INDEX_URL, req, resp);
             }
             throw new ConverterException();
         } catch (Exception e) {

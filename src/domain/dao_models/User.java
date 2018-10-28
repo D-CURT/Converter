@@ -37,4 +37,14 @@ public class User {
         return Objects.equals(login, user.login) &&
                 Objects.equals(password, user.password);
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

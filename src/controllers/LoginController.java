@@ -4,6 +4,7 @@ import dao.UserStorage;
 import domain.dao_models.User;
 import domain.dao_models.factory.UserFactory;
 import utils.Constants;
+import utils.exceptions.ConverterException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +24,7 @@ public class LoginController extends AbstractController {
                 req.setAttribute("user", user);
                 forward(Constants.INDEX_URL, req, resp);
             }
+            throw new ConverterException();
         } catch (Exception e) {
             forwardError(Constants.LOGIN_URL, "Incorrect login or password", req, resp);
         }

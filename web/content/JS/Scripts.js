@@ -3,6 +3,6 @@ function serviceTypeInitializer(type) {
     document.inputForm.submit();
 }
 
-function submit() {
-    document.loginForm.submit();
+function submit(formName) {
+    document.formName.submit();
 }

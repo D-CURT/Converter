@@ -21,6 +21,7 @@ public class UserStorage {
     }
 
     public boolean add(User user) {
+        System.out.println(users);
         String name = user.getName();
         if (name == null || name.equals(Constants.EMPTY))
             return false;
