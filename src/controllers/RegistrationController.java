@@ -16,12 +16,14 @@ import java.io.IOException;
 public class RegistrationController extends AbstractController {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
+        String name = req.getParameter("name"),
+               login = req.getParameter("login"),
+               password = req.getParameter("password");
+        User user;
+        UserStorage base;
         try {
-            User user = UserFactory.create(name, login, password);
-            UserStorage base = UserStorage.getInstance();
+            user = UserFactory.create(name, login, password);
+            base = UserStorage.getInstance();
             if (!base.check(user)) {
                 base.add(user);
                 forward(Constants.INDEX_URL, req, resp);

@@ -16,10 +16,11 @@ import java.io.IOException;
 public class LoginController extends AbstractController {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
+        String login = req.getParameter("login"),
+               password = req.getParameter("password");
+        User user;
         try {
-            User user = UserFactory.create(login, password);
+            user = UserFactory.create(login, password);
             if (UserStorage.getInstance().check(user)) {
                 req.setAttribute("user", user);
                 forward(Constants.INDEX_URL, req, resp);
