@@ -27,9 +27,9 @@ public class ServiceController extends AbstractController {
             Service service = ServiceFactory.getService(singletonList(value + SPACE + unit),
                     Services.getServiceType(serviceType));
             req.setAttribute("results", service.action(SpeedUnits.getUnit(toUnit)));
-            forward("/view", req, resp);
+            forward(Constants.VIEWING_CONTROLLER, req, resp);
         } catch (Exception e) {
-            forwardError(Constants.INDEX_URL, e.getMessage(), req, resp);
+            forwardError(Constants.INDEX_URL, "incorrect data", req, resp);
         }
     }
 }

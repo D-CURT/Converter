@@ -16,6 +16,8 @@ public final class Constants {
     public static final String REGISTRATION_URL = "/jsp/registration.jsp";
     public static final String VIEW_URL = "/jsp/viewResults.jsp";
 
+    public static final String VIEWING_CONTROLLER = "/view";
+
     // =========   SPEED UNITS   =========
 
     public static final String KMH = "kmh";
