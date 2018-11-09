@@ -13,7 +13,7 @@
       <c:if test="${error != null}">
           <p style="color: red">${error}</p>
       </c:if>
-      <form action="converter" name="inputForm" method="get">
+      <form action="converter" name="inputForm" method="post">
           <input id="serv" type="hidden" name="service" value="${service}">
           <input type="hidden" name="results" value="">
           <input type="text" name="inputValue" value="${inputValue}" title="input">
@@ -33,9 +33,8 @@
           <input type="button" value="Convert" onclick="serviceTypeInitializer('conversion')">
           <br>
 
-          <c:forEach var="result" items="${results}">
-              <c:out value="${result}"/>
-          </c:forEach>
+
       </form>
+  <%@include file="jsp/viewResults.jsp"%>
   </body>
 </html>

@@ -4,6 +4,10 @@
     <title>View Page</title>
 </head>
 <body>
-
+view
+${results}
+<c:forEach var="result" items="${results}">
+    <c:out value="${result}"/>
+</c:forEach>
 </body>
 </html>

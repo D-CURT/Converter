@@ -6,6 +6,6 @@
 <body>
 <%@include file="header.jsp"%>
 <hr>
-
+<%@include file="viewResults.jsp"%>
 </body>
 </html>

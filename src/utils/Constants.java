@@ -1,6 +1,6 @@
 package utils;
 
-public class Constants {
+public final class Constants {
     // =========   GENERAL   ==========
 
     public static final String EMPTY = "";
@@ -14,6 +14,7 @@ public class Constants {
     public static final String INDEX_URL = "/index.jsp";
     public static final String LOGIN_URL = "/jsp/login.jsp";
     public static final String REGISTRATION_URL = "/jsp/registration.jsp";
+    public static final String VIEW_URL = "/jsp/viewResults.jsp";
 
     // =========   SPEED UNITS   =========
 
