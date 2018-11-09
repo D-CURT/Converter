@@ -1,3 +1,4 @@
+<%@ page import="utils.Constants" %>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <html>
@@ -9,7 +10,7 @@
         <tr>
             <th>
                 <c:choose>
-                    <c:when test="${not empty user}">
+                    <c:when test="${empty user}">
                         <c:out value="USER: guest"/>
                     </c:when>
                     <c:otherwise>
